@@ -1,0 +1,30 @@
+,\CodeIn{typedef},\CodeIn{union},\CodeIn{goto},General
+\CodeIn{typedef},83.11%,47.16%,0.48%,4.38%
+\CodeIn{union},10.80%,80.43%,0.10%,0.32%
+\CodeIn{goto},0.22%,0.11%,77.62%,1.16%
+coverage,123226,125041,120452,188148
+,\CodeIn{apply},\CodeIn{expected},\CodeIn{variant},General
+\CodeIn{apply},70.23%,0.41%,0.68%,0.32%
+\CodeIn{expected},0.26%,79.72%,0.94%,1.33%
+\CodeIn{variant},1.16%,5.98%,93.19%,3.63%
+coverage,182261,175963,182333,193254
+,\CodeIn{Array},\CodeIn{BitVec},\CodeIn{Real},General
+\CodeIn{Array},82.23%,2.08%,1.44%,11.07%
+\CodeIn{BitVec},2.57%,88.48%,0.86%,5.46%
+\CodeIn{Real},1.45%,0.17%,96.01%,17.36%
+coverage,46392,48841,47619,52449
+,\CodeIn{atomic},\CodeIn{atomic},\CodeIn{heap},General
+\CodeIn{atomic},90.09%,0.04%,0.06%,1.01%
+\CodeIn{big},0.18%,97.20%,0.23%,3.63%
+\CodeIn{heap},0.30%,0.04%,91.18%,2.22%
+coverage,10156,12986,9790,37561
+,\CodeIn{instanceof},\CodeIn{synchronized},\CodeIn{finally},General
+\CodeIn{instanceof},88.00%,0.08%,0.85%,1.86%
+\CodeIn{synchronized},0.16%,94.80%,0.16%,0.85%
+\CodeIn{finally},0.51%,3.17%,78.62%,0.82%
+coverage,14546,13972,13203,16128
+,\CodeIn{switch},\CodeIn{for loop},\CodeIn{linear},General
+\CodeIn{switch},71.76%,0.00%,0.00%,0.00%
+\CodeIn{for loop},0.17%,75.97%,0.00%,0.00%
+\CodeIn{linear},0.00%,0.00%,54.79%,0.00%
+coverage,30597,26703,29535,33853
