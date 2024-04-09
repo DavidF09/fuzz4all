@@ -9,6 +9,6 @@ RUN export FUZZING_MODEL="bigcode/starcoderbase-1b"
 RUN export FUZZING_DEVICE="cpu"
 RUN export OPENAI_API_KEY="KEY HERE"
 
-RUN git clone https://github.com/DavidF09/fuzz4all.git
+WORKDIR /home/
 
-WORKDIR /home/fuzz4all
+RUN git clone https://github.com/DavidF09/fuzz4all.git
