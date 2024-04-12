@@ -4,20 +4,56 @@
     <title>Bugs Data</title>
 
     <style>
-        table, tr, td {
+        table {
+            border-collapse: collapse;
             border: 1px solid black;
+        }
+
+        td {
+            text-align: left;
+            padding: 10px;
+        }
+          
+        tr:nth-child(odd) {
+            background-color: #A8B8C8;
+            border: 1px solid black;
+        }
+
+        .some {
+            max-width: 500px;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        .header_div {
+            display: inline-block;
+        }
+
+        #clang_info {
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <table id="clang_table">
-        {% for info in data %}
-            <tr>
-                {% for i in info %}
-                    <td>{{i}}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
+    <div class="header">
+        <div class="header_div">
+            <h1>Clang Bugs Data</h1>
+        </div>
+        <div class="header_div"></div>
+    </div>
+    <div id="clang_info">
+        <table id="clang_table">
+            {% for info in clang_data %}
+                <tr>
+                    {% for i in info %}
+                        <td><div class="some">{{i}}</div></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
