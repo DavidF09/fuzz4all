@@ -1,0 +1,11 @@
+(set-logic ALL)
+
+
+
+
+(declare-const x s0)
+(assert (= x x))
+
+(check-sat)
+(get-model)
+(exit)

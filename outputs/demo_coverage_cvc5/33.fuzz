@@ -1,0 +1,19 @@
+(set-logic ALL)
+
+
+(declare-sort S)
+(declare-sort T)
+
+(declare-fun f (S) T)
+(declare-fun g (S) T)
+
+(assert
+(forall
+ (
+ (x (S))
+ )
+ (ite
+ (= x (g (f x)))
+ (= (f x) (g x))
+ 1))
+)

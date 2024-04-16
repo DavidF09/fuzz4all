@@ -1,0 +1,13 @@
+(set-logic ALL)
+
+
+
+
+(assert (exists ((u Real)) (>= u 0)))
+
+
+
+(check-sat)
+
+(exit)
+"

@@ -1,0 +1,7 @@
+(set-logic ALL)
+
+
+(define-fun foo ((x Int)) Int (f x))
+(define-fun bar ((x Int)) Int (+ x 2))
+(assert (=   (* 12 (bar (foo 4) ) 8 (foo 5) )  120))
+(check-sat)

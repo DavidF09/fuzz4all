@@ -1,0 +1,59 @@
+(set-logic ALL)
+
+
+
+
+
+
+
+(declare-fun c::div () Real)
+(declare-fun c::mod () Real)
+(declare-fun f::id () Real)
+(declare-fun f::succ () Real)
+(declare-fun f::pred () Real)
+(declare-fun f::add () Real)
+(declare-fun f::sub () Real)
+(declare-fun m@::div () Real)
+(declare-fun m@::mul () Real)
+(declare-fun m@::inv () Real)
+(declare-fun a@::int () Int)
+(declare-fun z@::int () Int)
+(declare-fun f@::nat () Real)
+
+
+
+(push)
+
+
+(declare-sort a) (theory a)
+(declare-sort m) (theory m)
+(declare-sort f) (theory f)
+(declare-sort z) (theory z)
+(declare-datatypes ((a@@::int (a@@::int)) (z@@::nat (z@@::nat))) (()) (a a) (a@@::int a@@::int)) (theory a@@)
+(declare-datatypes ((z@@::int (z@@::int)) (m@@::int (m@@::int)) (m@@::rat (m@@::rat (num m@@::rat) (den m@@::rat)))) (()) (m z) (m@::div m@::div) (m@::mul m@::mul) (m@::inv m@::inv) (m@@::int m@@::int) (m@@::rat m@@::rat)) (theory m@@)
+(declare-datatypes ((c@@::int (c@@::int)) (c@@::rat (c@@::rat (numerator c@@::rat) (denominator c@@::rat)))) (()) (c a) (f a) (a@@::int a@@::int) (z@@::nat z@@::nat) (c@@::rat c@@::rat) (c@@::int c@@::int) (m@@::int m@@::int) (z@@::int z@@::int)) (theory c@@)
+(declare-logic "arithmetic")
+
+
+
+
+
+
+(declare-fun id@@ (a) Bool) (theory a@@)
+(declare-fun succ@@ (a) Bool) (theory a@@)
+(declare-fun pred@@ (a) Bool) (theory a@@)
+(declare-fun mult@@ (M I) Bool) (theory m@@)
+(declare-fun id@@ (I) Bool) (theory m@@)
+(declare-fun nat@@ (M) Bool) (theory m@@)
+(declare-fun le@@ (M R) Bool) (theory m@@)
+(declare-fun lt@@ (M R) Bool) (theory m@@)
+(declare-fun eq@@ (R R) Bool) (theory m@@)
+(declare-fun div@@ (M F) Bool) (theory c@@)
+(declare-fun mod@@ (M F) Bool) (theory c@@)
+
+
+(push)
+
+
+
+(assert (forall ( (i Int) (r Real) (m m) (j z) (k z) (f f) ) (and (id@@ i) (id@@ r) (id@@ m) (id@@ j) (id@@ k) (id@@ f) (eq@@ (to_int i) i) (eq@@ (z::to_real j) j) (eq@@ (z::to_real k) k) (eq@@ (to_int r) r) (eq@@ i (to_int (to_real i))) (eq@@ r (to_real (to_int r))) (succ@@ f) (lt@@ (to

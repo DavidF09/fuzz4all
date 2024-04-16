@@ -1,0 +1,77 @@
+(set-logic ALL)
+
+
+(declare-sort Bool)
+
+(define-const x Bool true)
+
+(declare-fun is-even ((r Real)) Bool)
+
+(declare-fun is-prime ((n Int)) Bool)
+
+(declare-fun is-divisible ((n Int) (m Int)) Bool)
+
+(define-fun divides ((n Int) (m Int)) Bool
+   (or (= n m) (= (* n m) 0)))
+
+(define-fun abs ((r Real)) Real
+     (ite (> r 0.0) r (- 0.0 r)))
+
+(define-fun remainder ((m Int) (n Int)) Int
+   (div m n))
+
+(define-fun recip ((r Real)) Real
+(/ 1.0 r))
+
+(assert (or (= x true) (= x false)))
+
+(declare-fun prime ((n Int)) Bool)
+
+(define-fun cube ((n Int)) Int
+(* (* n n) n))
+
+(assert (forall ((n Int))
+  (=> (prime n) (is-divisible n 1))))
+
+(assert (forall ((n Int) (m Int))
+  (=> (and (>= n 0) (>= m 0))
+      (! (= (cube n) (* n n n)) :pattern ((cube n) (* n n n)))
+      (! (= (is-divisible m n) (is-divisible 16 n)) :pattern ((is-divisible m n) (is-divisible 16 n)))
+      (! (divides n (cube m)) :pattern ((divides n (cube m))) :weight 1000)
+      (! (divides n 25) :pattern ((divides n 25)) :weight 10)
+      (divides m (* n n n)))))
+
+(check-sat)
+(exit)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
