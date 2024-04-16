@@ -1,0 +1,80 @@
+#include <iostream>
+
+
+using namespace std;
+
+int print_array(int x[], int n);
+
+int print_matrix(int a[], int nR, int nC);
+
+int main()
+{
+    int n,m,i;
+    cout << "Enter number of rows: ";
+    cin >> n;
+    cout << "Enter number of columns: ";
+    cin >> m;
+    int a[n][m];
+    for(i=0; i<n; i++)
+    {
+        for(j=0; j<m; j++)
+            cin >> a[i][j];
+    }
+     
+    cout << "Array: ";
+    print_array(a, n*m);
+     
+    cout << "Matrix:\n";
+    print_matrix(a, n, m);
+    int d[10] = {2.0, 5.0, 10.0, 15};       
+    cout << d << endl;
+    double b[2][2] = {12.0,23.0};
+    cout << b[0][1];
+    cout << endl << endl;
+     
+    cout << "Matrix:\n";
+    for(i=0; i<2; i++)
+    {
+        for(j=0; j<2; j++)
+            cout << a[i][j] << " ";
+        cout << endl;
+    }
+    return 0;        
+}
+
+ 
+ 
+ 
+ 
+int print_array(int x[], int n)
+{
+    double sum, temp;
+    int i;
+    for(i=0; i<n; i++)
+    {
+        sum=sum+x[i];
+        temp=sum;
+    }
+     
+    sum=temp/n;
+    cout << sum <<endl;
+    return 0;
+}
+
+ 
+ 
+ 
+ 
+int print_matrix(int a[], int nR, int nC)
+{
+    int i,j;
+	cout << "Matrix: ";
+    for(i=0; i<nR; i++)
+    {
+        for(j=0; j<nC; j++)   
+            cout << a[i][j] << " ";
+        cout << endl;
+    }
+
+    return 0;
+}

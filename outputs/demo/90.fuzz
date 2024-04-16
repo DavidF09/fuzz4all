@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+struct Base {};
+struct Derived : virtual Base {
+    void printderived() {
+        cout << "derived" << endl;
+    }
+};
+int main() {
+    new Derived;
+    printderived();
+}
+ 
+#include <iostream>
+using namespace std;
+struct Base {};
+struct Derived : virtual Base {
+    void printderived() {
+        cout << "derived" << endl;
+    }
+};
+int main() {
+    Derived d;
+    d.printderived();
+    return 0;
+}
+ 
+#include <iostream>
+using namespace std;
+
+string getString() {
+    string text, temp;
+    cout << "Enter input string > ";
+    cin >> text;
+    return text;
+}
+
+int main() {
+    cout << getString() << endl;
+    return 0;
+}
