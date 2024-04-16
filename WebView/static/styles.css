@@ -1,0 +1,30 @@
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+td {
+    text-align: left;
+    padding: 10px;
+}
+  
+tr:nth-child(odd) {
+    background-color: #A8B8C8;
+    border: 1px solid black;
+}
+
+.some {
+    max-height: 100px;
+    overflow: auto;
+}
+
+.header_div {
+    display: inline-block;
+}
+
+#clang_info {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
