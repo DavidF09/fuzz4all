@@ -1,0 +1,17 @@
+#include <iostream>
+
+
+struct Color {
+    char red;
+    char green;
+    char blue;
+};
+
+
+int main() {
+    std::cout << "\n\n" << Color {};
+    std::cout << Color { 255, 255, 255 };
+    
+    return 0;
+}
+

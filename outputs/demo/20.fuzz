@@ -1,0 +1,13 @@
+#include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = 20;
+    cout << age;
+    int x = 1 + 2 * 3;
+    cout << x;
+    int w;
+    cin >> w;
+    int z = w + 128;
+    cout << z;
+    return 0;
+}

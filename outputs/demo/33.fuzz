@@ -1,0 +1,15 @@
+#include <iostream>
+ 
+int arr[]={10, 20, 30, 100}; 
+extern int n;    
+int main()
+{
+  arr[n++] = 40;
+  arr[n++] = 30;
+  arr[n++] = 20;
+  arr[n++] = 50;
+  for (int i=0; i<n; ++i) 
+    std::cout << arr[i] << std::endl;
+ 
+  return 0;
+}

@@ -1,0 +1,7 @@
+#include <iostream>
+using namespace cout; 
+int main()
+{
+	cout;
+	return 0;
+}

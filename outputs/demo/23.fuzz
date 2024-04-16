@@ -1,0 +1,8 @@
+#include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = 20;
+    cout << age;
+    int x = 1 + 2 * 3;
+    cout << x;
+}

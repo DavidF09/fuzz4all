@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+class A{
+    private:
+        int age;
+        public:
+             A(){age=20;}
+             A(int x){age=20;}
+};
+class B: A{
+    public:
+        B(){age=20;}
+        B(int x){age=20;}
+};
+               
+
