@@ -1,0 +1,7 @@
+(set-logic ALL)
+
+(declare-const x Int)  
+(declare-const y Int)
+(assert (not (= (+ x y) 6)))  
+(check-sat)  
+(exit)

@@ -1,0 +1,13 @@
+(set-logic ALL)
+
+
+
+
+
+(declare-fun m1 () (_ BitVec 16))
+(declare-fun m2 () (_ BitVec 16))
+(assert (= (bvshl m1 #x07) 0x5678))
+(assert (= (bvshl m2 #x07) (bvshl m1 #x07)))
+
+
+(check-sat)

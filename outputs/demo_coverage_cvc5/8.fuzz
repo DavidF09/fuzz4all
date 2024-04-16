@@ -1,0 +1,7 @@
+(set-logic ALL)
+
+(declare-fun p () Bool)
+(assert (= p (not p)))
+(check-sat)
+(get-model)
+(exit)

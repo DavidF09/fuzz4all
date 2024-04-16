@@ -1,0 +1,28 @@
+(set-logic ALL)
+
+
+(declare-fun real_of_int (Int) Real)
+(declare-fun real_of_rational (0.0 1.0) Real)
+
+(declare-fun is_even (Real) Bool)
+(declare-fun is_neg (Real) Bool)
+(declare-fun is_pos (Real) Bool)
+
+(declare-fun sum (Real Real) Real)
+
+(declare-fun my_term () Int)  
+
+(declare-fun my_fun () Real)
+
+(assert (= my_term my_fun))
+
+(assert (= (is_neg my_term) (is_pos my_fun)))
+
+(assert (= (is_even (sum (real_of_int my_term) (real_of_rational my_fun))) false))
+
+(check-sat) 
+
+
+
+
+(define_smt2_commands)

@@ -1,0 +1,5 @@
+(set-logic ALL)
+
+(declare-const x Complex)
+(assert (not (= (toReal (abs x)) 2)))
+(check-sat)

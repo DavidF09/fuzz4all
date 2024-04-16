@@ -1,0 +1,18 @@
+(set-logic ALL)
+(set-logic ALL)
+
+
+(declare-sort nat)
+
+(declare-fun is-even (nat) bool)
+
+
+
+
+(assert (= (is-even (+ x y 1)) (not (is-even x))))
+
+
+
+
+
+(check-sat)
