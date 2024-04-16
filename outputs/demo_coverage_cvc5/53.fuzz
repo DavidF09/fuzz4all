@@ -1,0 +1,11 @@
+(set-logic ALL)
+
+
+(declare-fun add (Int Int) Int)
+
+(declare-fun mul (Int Int) Int)
+(assert (not (= (add a b) (mul a b))))
+(declare-fun a () Int)
+(declare-fun b () Int)
+(check-sat)
+(exit)

@@ -1,0 +1,16 @@
+(set-logic ALL)
+
+
+(declare-sort i)
+
+(declare-sort r)
+
+(declare-fun even (i) Bool)
+
+(declare-fun real_minus (r r) r)
+
+(assert (not (even 12)))
+
+(assert (not (real_minus 4 2)))
+
+(assert (not (> 4 7)))
