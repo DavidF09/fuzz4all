@@ -1,0 +1,49 @@
+#include <iostream>
+using std::cout; using namespace std;
+struct person
+{
+    explicit person(int);
+    explicit person(const string&);
+    explicit person(float);
+    person(const person&);               
+    person& operator=(const person&);   
+private:
+    int myAge;
+};
+person::person(int aAge)
+    : myAge(aAge)
+{}
+
+person::person(const string& fullName)
+{
+    char firstName[32];
+    char lastName[32];
+    strcpy(firstName, fullName.c_str());
+    const char* at = strchr(firstName,'');
+    if (at)
+        strcpy(lastName, at + 1);
+    else
+        strcpy(lastName, fullName.c_str());
+    myAge = stoi(firstName, NULL, 10);
+    cout << firstName << " " << lastName << endl ;
+}
+
+person::person(float salary): myAge(salary)
+{}
+
+person::person(const person& p)
+    : myAge(p.myAge)
+{}
+
+person& person::operator=(const person& p)
+{
+    myAge = p.myAge;
+    return *this;
+}
+int main()
+{
+    person p(6);
+    p = p;
+    cout << p.myAge << endl;
+    return 0;
+}

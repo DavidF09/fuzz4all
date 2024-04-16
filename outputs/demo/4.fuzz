@@ -1,0 +1,186 @@
+#include <iostream>
+
+#include <string>
+using namespace std;
+struct test
+{
+    int a;
+    test(): a(0) {}
+    test(int _a): a(_a) {}
+};
+class test2
+{
+public:    
+    void test3()
+    {
+    }
+};
+class test3 {};
+
+class test4
+{
+    using std::cout;
+    using std::endl;
+public:
+    test4()
+    {
+    }
+    template <class T1, class... Ts>
+    test4(T1 t1, Ts... ts)
+    {
+        cout << "[test4] " << ts << endl; 
+        test5<0, Ts...>(t1, ts...); 
+    }
+    template <class T>
+    test4(T t)
+    {
+        cout << "[test4] Type " << typeid(t).name() << endl;
+    }
+    template <class... Ts>
+    void test5(Ts... ts)
+    {
+        cout << "Type " << typeid(Ts).name() << " " << ts << endl;
+    }
+};
+struct test5
+{
+    int a;
+    test5() {}
+};
+
+struct test6 {};
+
+class test7
+
+{
+    using std::cout;
+    using std::endl;
+public:
+    test7()
+    {
+    }
+    template <class... Ts>
+    test7(const test7<Ts...>& ts)
+    {
+        cout << "[test7] Copy " << ts.str() << endl; 
+        test7<0, Ts...>(ts); 
+    }
+    test7(const test5<>& t)
+    {
+        cout << "[test7] Constrain 2" << endl; 
+    }
+    test7(const test6<>& d)
+    {
+        cout << "[test7] Constrain 3" << endl; 
+    }
+};
+
+struct test8;
+
+class test9
+{
+    using std::cout;
+    using std::endl;
+public:
+    test9()
+    {
+    }
+    template <class... Ts>
+   test9(test8<Ts...>& ts)
+    {
+        cout << "[test9] Copy " << ts.str() << endl; 
+        test9<0, Ts...>(ts); 
+    }
+    template <class T>
+   test9(test5<T>& t)
+    {
+        cout << "[test9] Constrain 1" << endl; 
+    }
+};
+
+struct test10
+{
+    test10(): a(0) {}
+    int a;
+};
+struct test11
+{
+    test11(): a(0) {}
+    int a;
+};
+
+struct  test12
+{
+public:
+test12()
+{
+}
+test12(int _a): a(_a)
+{
+}
+template <class... Ts>
+test12(int _a, Ts... ts)
+{
+    cout << "[test12] A function of args" << endl; 
+    test12(_a, ts...); 
+}
+};
+struct  test13
+{
+    test10 a;
+};
+struct  test14
+{
+    test11 a;
+};
+
+struct  test15
+{
+    test12 a;
+};
+struct  test16
+{
+    test13 a;
+};
+struct  test17
+{
+    test14 a;
+};
+
+struct   test18
+{
+    test15 a;
+};
+struct test19
+{
+    template <class>
+   test19(){};
+};
+struct test20
+{
+    template <class>
+    test20(){};
+};
+
+
+}  
+
+int main()
+{
+    cout << "Testing new std:: features.... "<< endl;
+    test6 t;
+    test7 ts;
+    test4 test42;
+    test42.test3();
+    test test43;
+    test43 = 0;
+    test<int> t1 = 10;
+    test<int> t2 = {0, 10};
+    test<int> t3 = 10, t4 = 20, t5 = 30;
+    test<int, long> t6 = 10, t7 = 20;
+    test<int[20], long> t8 = {(int)11, (int)22}, t9 = {33};
+    
+    test2 test22;
+    test22.test3();
+    
+    test5 test

@@ -1,0 +1,18 @@
+#include <iostream>
+using std::cout; 
+struct Person
+{
+    int age;
+    void display() const { 
+        cout << age << endl; 
+    } 
+}; 
+int main() 
+{
+    cout << "Enter age: ";
+    int age;
+    cin >> age;
+    Person p {age};
+    p.display();
+    return 0;
+}
