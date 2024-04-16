@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coverage Data</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='coverage.css')}}">
+</head>
+<body>
+    <div class="header">
+        <div class="header_div">
+            <h1 id="bug_type">Fuzz4All against state-of-the-art fuzzers</h1>
+        </div>
+    </div>
+
+    <table id="clang_table">
+        <tr>
+            <th>Target</th>
+            <th>Fuzzer</th>
+            <th># programs</th>
+            <th>% valid</th>
+            <th>Coverage</th>
+        </tr>
+
+        {% for info in data %}
+            <tr>
+                {% for i in info %}
+                    <td><div class="some">{{i}}</div></td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
