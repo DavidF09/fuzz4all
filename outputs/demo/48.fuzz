@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+int a = 100;
+double b = 96.0;
+class MyClass {
+public:
+	void print() {
+		cout << a << endl;
+		cout << b << endl;
+	}
+};
+MyClass m;
+m.print();
+int main()
+{
+	m.print();
+	return 0;
+}
+
+
+

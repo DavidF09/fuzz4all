@@ -1,0 +1,16 @@
+#include <iostream>
+class MyClass
+{
+public:
+  MyClass()
+  {
+
+  }
+  
+};
+int main()
+{
+  MyClass mc;
+  
+  return 0;
+}

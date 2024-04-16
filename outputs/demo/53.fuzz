@@ -1,0 +1,13 @@
+#include <iostream>
+
+
+int f()
+{
+    auto x = +5;
+}
+
+int main()
+{
+    f();
+    std::cout << x;
+}

@@ -1,0 +1,44 @@
+#include <iostream>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc1;  
+  mc1 = MyClass();  
+  return 0;
+}
+ 
+#include <iostream>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+    myFunction<bool> f = [](int i) { return i % 2 == 0; };
+    f(1);
+  }
+public:
+  template<class T>
+  void myFunction(T t)
+  {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyFunction " << t << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc1;  
+  mc1.myFunction<int>(17);  
+  return 0;
+}

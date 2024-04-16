@@ -1,0 +1,22 @@
+#include <iostream>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc1;  
+  MyClass mc2;
+
+  mc1 = mc1;
+  
+  std::cout << "myClass 1: " << typeid(mc1).name() << std::endl;
+  std::cout << "myClass 2: " << typeid(mc2).name() << std::endl;
+  
+  return 0;
+}

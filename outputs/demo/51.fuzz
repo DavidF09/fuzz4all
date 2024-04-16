@@ -1,0 +1,9 @@
+#include <iostream>
+
+
+int main()
+{
+    std::array<bool, 100> a;
+   
+    return 0;
+}
