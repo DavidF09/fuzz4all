@@ -1,0 +1,2681 @@
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+class Example : public std::enable_shared_from_this<Example>
+{
+#ifdef HAVE_NEW_CXX11
+public:
+#endif
+    int x;
+    int i;
+    void f() {
+        i++;
+    }
+};
+
+Example::Example(int i) : x(0), i(i)
+{
+    std::shared_ptr <Example> ptr = shared_from_this();
+    std::thread t1(std::move( ptr ), i);
+     
+    t1.detach();
+}
+
+void print(const Example &ex)
+{
+    std::cout << "Printing " << ex.x << ", " << ex.i << "\n";
+}
+
+int main()
+{
+    Example e1(7);
+    Example e2(8);
+    e1 = e2;
+    print(e1);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <string>
+#include <list>
+ 
+
+#include <sstream>
+using namespace std;
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+class TestClass{
+private:
+	class A {
+		public:
+			A() : a(0) {}
+			A(int v) { a = v; }
+
+			int a;
+	};
+	A a;
+public:
+	TestClass(int i) {
+		a.set(i);
+	}
+
+	void print() {
+		cout << a.a << " ";
+	}
+
+};
+
+int main() {
+	TestClass t;
+	t.print();
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+int main ()
+{
+	std::cout << "Hello World\n";
+	return 0;	
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+using namespace std;
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+
+void testVariableTypeDecl() {
+    int x = 10;
+    auto y = x + 10;
+    auto y2 = "hello";
+    
+    cout << "x: " << x << " y: " << y << " y2: " << y2;
+}
+
+ 
+ 
+int main() {
+    testVariableTypeDecl();
+     
+
+     
+    const int x = 10;
+    
+    testVariableTypeDecl2();  
+
+    const auto y = x + 10;  
+
+    cout << "x: " << x << " y: " << y;
+     
+     
+    
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <string>
+using namespace std;
+struct test
+{
+    int a;
+    test(): a(0) {}
+    test(int _a): a(_a) {}
+};
+class test2
+{
+public:    
+    void test3()
+    {
+    }
+};
+class test3 {};
+
+class test4
+{
+    using std::cout;
+    using std::endl;
+public:
+    test4()
+    {
+    }
+    template <class T1, class... Ts>
+    test4(T1 t1, Ts... ts)
+    {
+        cout << "[test4] " << ts << endl; 
+        test5<0, Ts...>(t1, ts...); 
+    }
+    template <class T>
+    test4(T t)
+    {
+        cout << "[test4] Type " << typeid(t).name() << endl;
+    }
+    template <class... Ts>
+    void test5(Ts... ts)
+    {
+        cout << "Type " << typeid(Ts).name() << " " << ts << endl;
+    }
+};
+struct test5
+{
+    int a;
+    test5() {}
+};
+
+struct test6 {};
+
+class test7
+
+{
+    using std::cout;
+    using std::endl;
+public:
+    test7()
+    {
+    }
+    template <class... Ts>
+    test7(const test7<Ts...>& ts)
+    {
+        cout << "[test7] Copy " << ts.str() << endl; 
+        test7<0, Ts...>(ts); 
+    }
+    test7(const test5<>& t)
+    {
+        cout << "[test7] Constrain 2" << endl; 
+    }
+    test7(const test6<>& d)
+    {
+        cout << "[test7] Constrain 3" << endl; 
+    }
+};
+
+struct test8;
+
+class test9
+{
+    using std::cout;
+    using std::endl;
+public:
+    test9()
+    {
+    }
+    template <class... Ts>
+   test9(test8<Ts...>& ts)
+    {
+        cout << "[test9] Copy " << ts.str() << endl; 
+        test9<0, Ts...>(ts); 
+    }
+    template <class T>
+   test9(test5<T>& t)
+    {
+        cout << "[test9] Constrain 1" << endl; 
+    }
+};
+
+struct test10
+{
+    test10(): a(0) {}
+    int a;
+};
+struct test11
+{
+    test11(): a(0) {}
+    int a;
+};
+
+struct  test12
+{
+public:
+test12()
+{
+}
+test12(int _a): a(_a)
+{
+}
+template <class... Ts>
+test12(int _a, Ts... ts)
+{
+    cout << "[test12] A function of args" << endl; 
+    test12(_a, ts...); 
+}
+};
+struct  test13
+{
+    test10 a;
+};
+struct  test14
+{
+    test11 a;
+};
+
+struct  test15
+{
+    test12 a;
+};
+struct  test16
+{
+    test13 a;
+};
+struct  test17
+{
+    test14 a;
+};
+
+struct   test18
+{
+    test15 a;
+};
+struct test19
+{
+    template <class>
+   test19(){};
+};
+struct test20
+{
+    template <class>
+    test20(){};
+};
+
+
+}  
+
+int main()
+{
+    cout << "Testing new std:: features.... "<< endl;
+    test6 t;
+    test7 ts;
+    test4 test42;
+    test42.test3();
+    test test43;
+    test43 = 0;
+    test<int> t1 = 10;
+    test<int> t2 = {0, 10};
+    test<int> t3 = 10, t4 = 20, t5 = 30;
+    test<int, long> t6 = 10, t7 = 20;
+    test<int[20], long> t8 = {(int)11, (int)22}, t9 = {33};
+    
+    test2 test22;
+    test22.test3();
+    
+    test5 test
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+int main ()
+{
+	std::cout << "Hello World\n";
+	return 0;	
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main ()
+{
+	std::cout << "Hello World\n";
+	return 0;	
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main ()
+{
+	std::cout << "Hello World" << std::endl;
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main ()
+{
+	using namespace std;
+	cout << "Hello World\n";
+	return 0;	
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main ()
+{
+	float x; 
+	char s[20];
+	std::cout << "Hello World\n";
+	int z;
+	return 0;	
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+class A
+{
+public:
+	
+	int getdata()
+	{ return 0; }
+
+};
+
+class B
+{
+public:
+	
+	int getdata()
+	{
+		A a;
+		return a.getdata();
+	}
+
+};
+
+int main ()
+{
+	B b;
+	std::cout  <<"Hello "<< b.getdata() <<"\n";
+	return 0;	
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main()
+{
+  using namespace std;
+  
+  class Shape
+  {
+  public:
+    virtual void Draw() = 0;
+    virtual double GetArea() = 0;
+  };
+  
+  class Circle : public Shape
+  {
+  private:
+    double radius;
+  
+  public:
+    Circle() : radius(1.0) {}
+    
+    Circle(double radius) : radius(radius) {}
+    
+    virtual void Draw() { cout << "Drawing circle " << radius << "..." << endl; }
+    virtual double GetArea() { return M_PI * radius * radius; }
+  };
+  
+  class Square : public Shape
+  {
+  private:
+    double side;
+    double sides;
+  
+  public:
+    Square() : side(1.0), sides(4) {}
+    
+    Square(double side, double sides) : side(side), sides(sides) {}
+    
+    virtual void Draw() { cout << "Drawing square " << sides << " " << side << "..." << endl; }
+    virtual double GetArea() { return sides * side; }
+    
+  };
+  
+  class Triangle : public Shape
+  {
+  private:
+    double side1, side2, height;
+  
+  public:
+    Triangle() : side1(1.0), side2(1.0), height(1.0) {}
+    
+    Triangle(double side1, double side2, double height) : side1(side1), side2(side2), height(height) {}
+    
+    virtual void Draw() { cout << "Drawing triangle... " << endl; }
+    virtual double GetArea() { return side1 * side2 / 2.0 + height; }
+  };
+  
+  Shape* obj = new Circle(0.5);
+  obj->Draw();
+  double area = obj->GetArea();
+  
+  obj = new Square(2.0, 2);
+  obj->Draw();
+  area += obj->GetArea();
+    
+  obj = new Triangle(3.0, 4.0, 3.0);
+  obj->Draw();
+  area -= obj->GetArea();
+  
+  delete obj;
+  return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+const int A = a;
+const int B = b;
+float d = c;
+
+
+int main()
+{
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <string>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+using std::cout; using namespace std;
+
+int main()
+{
+    cout << "Enter age: ";
+    int age;
+    cin >> age;
+    cout << age << endl;
+
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using std::cout; using namespace std;
+int main()
+{
+    cout << "Enter age: ";
+    int age;
+    cin >> age;
+    cout << age << endl;
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main()
+{
+    cout << "Enter age: ";
+    int age;
+    cin >> age;
+    if( (age < 13) && (age >= 18) ) {
+        cout << "Below 13 and over 18" << endl;
+    }
+    else if( (age < 13) ) {
+        cout << "Below 13" << endl;
+    }
+    else if( (age == 13) ) {
+        cout << "Same age" << endl;
+    }
+    else {
+        cout << "Above 18" << endl;
+    }
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+struct person
+{
+    explicit person(int);
+    explicit person(const string&);
+    explicit person(float);
+    person(const person&);               
+    person& operator=(const person&);   
+private:
+    int myAge;
+};
+person::person(int aAge)
+    : myAge(aAge)
+{}
+
+person::person(const string& fullName)
+{
+    char firstName[32];
+    char lastName[32];
+    strcpy(firstName, fullName.c_str());
+    const char* at = strchr(firstName,'');
+    if (at)
+        strcpy(lastName, at + 1);
+    else
+        strcpy(lastName, fullName.c_str());
+    myAge = stoi(firstName, NULL, 10);
+    cout << firstName << " " << lastName << endl ;
+}
+
+person::person(float salary): myAge(salary)
+{}
+
+person::person(const person& p)
+    : myAge(p.myAge)
+{}
+
+person& person::operator=(const person& p)
+{
+    myAge = p.myAge;
+    return *this;
+}
+int main()
+{
+    person p(6);
+    p = p;
+    cout << p.myAge << endl;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main()
+{
+    int v;
+    cout << "Enter your age: ";
+    cin >> v && ((v < 0)? (cout << "your age cannot be negative")) : (cout << "Enter your age: ")) && cin >> v;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; 
+struct Person
+{
+    int age;
+    void display() const { 
+        cout << age << endl; 
+    } 
+}; 
+int main() 
+{
+    cout << "Enter age: ";
+    int age;
+    cin >> age;
+    Person p {age};
+    p.display();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = 20;
+    cout << age;
+    int x = 1 + 2 * 3;
+    cout << x;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = 20;
+    cout << age;
+    int x = 1 + 2 * 3;
+    cout << x;
+    return 0;
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = 20;
+    cout << age;
+    int x = 1 + 2 * 3;
+    cout << x;
+    int w;
+    cin >> w;
+    int z = w + 128;
+    cout << z;
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = -3, x = 2, y = 4;
+    cout << age * x * y << endl;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int x = 1 + 2 * 3;
+    cout << x;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = 20;
+    cout << age;
+    int x = 1 + 2 * 3;
+    cout << x;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = 20;
+    cout << age;
+    int x = 1 + 2 * 3;
+    cout << x;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = 20;
+    cout << age;
+    int x = 1 + 2 * 3;
+    cout << x;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = 20;
+    cout << age;
+     
+    int x = (1 + 2) * (1 + 3);    
+    cout << x;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+struct Demon {
+    int _age{ 20 };
+    double _height{ 4.5 };
+};
+
+class Animal {
+  private:
+    Demon _demon;
+  public:
+    Animal();
+    void setAge();
+    void talk();
+    void setWeight(double);   
+};
+
+Demon::Demon() {
+    cout << "Demon created with value: " << _age << ". ";
+}
+
+void Animal::setAge() {
+    cout << "Called method setAge on concrete Animal class.";
+}
+
+void Animal::talk() {
+    cout << "Called method talk on concrete Animal class.";
+}
+
+void Animal::setWeight(double weight) {
+    cout << "Called method setWeight on concrete Animal class.";
+}
+
+class Duck : public Animal {
+  public:
+    Duck();
+    void setFlyBehavior();
+};
+
+Duck::Duck() {
+    setFlyBehavior();
+}
+
+void Duck::setFlyBehavior() {
+    cout << "Called method setFlyBehavior on concrete Duck class.";
+}
+
+
+int main() {
+    Animal cat;
+    cat.setAge();
+    cat.talk();
+    Animal dog;
+    cat.setWeight(40);
+    Animal turtle;
+
+    Animal * pointer_to_Animal = &cat;
+
+    pointer_to_Animal->setAge();
+    pointer_to_Animal->talk();
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout; using namespace std;
+int main() {
+    cout << age;
+    int x = 1 + 2 * 3;
+    cout << x << " " << y << " " << z;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using std::cout;
+
+int main() {
+    int age = 20;
+    cout << age << endl;
+
+    int x = 1 + 2 * 3;
+    cout << x << endl;
+
+    auto q = 39 * 92;  
+    cout << q << endl;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+class A{
+    private:
+        int age;
+        public:
+             A(){age=20;}
+             A(int x){age=20;}
+};
+class B: A{
+    public:
+        B(){age=20;}
+        B(int x){age=20;}
+};
+               
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+struct Color {
+    char red;
+    char green;
+    char blue;
+};
+
+
+int main() {
+    std::cout << "\n\n" << Color {};
+    std::cout << Color { 255, 255, 255 };
+    
+    return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <thread>
+#include <string>
+#include <chrono>
+
+class Cpu
+{
+
+public:
+    Cpu();
+    void start();
+    void stop();
+
+private:
+    class ThreadData
+    {
+        public:
+            ThreadData(std::string newName = std::string())
+                        : currentName(newName)
+            {}
+            std::string currentName;
+    };
+    std::thread thread;
+    std::chrono::steady_clock::time_point lastTime;
+    std::chrono::milliseconds interval;
+    std::string currentName;
+};
+
+
+void Cpu::start()
+{
+    thread = threads::thread([this]()
+    {
+        for (;;)
+        {
+            lastTime = std::chrono::steady_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - lastTime);
+            std::this_thread::sleep_for(std::chrono::milliseconds(time_between_operations()));
+            std::cout << "My thread " << currentName << " last updated at " << lastTime << " for " << std::chrono::seconds(duration.count()).count() << " seconds." << std::endl;
+        }
+    });
+    std::cout << "My cpu thread started." << std::endl;
+}
+
+void Cpu::stop()
+{
+     
+    thread.join();
+    thread.join();
+    std::cout << "My cpu thread ended." << std::endl;
+}
+
+
+Cpu::Cpu()
+{
+}
+
+auto Cpu::time_between_operations()
+{
+    return interval.count();
+}
+
+
+int main()
+{
+    std::cout << "Do you want to stop CPU or continue " << std::endl
+              << "Enter " << std::endl;
+    char option = 0;
+    std::cin >> option;
+
+    if (option == 'c')
+    {
+        Cpu cp;
+        cp.start();
+    }
+    else
+    {
+        Cpu cp;
+        cp.stop();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+using namespace std; 
+
+int main()
+{
+	cout << "Hello World.";
+	
+	return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+ 
+int arr[]={10, 20, 30, 100}; 
+extern int n;    
+int main()
+{
+  arr[n++] = 40;
+  arr[n++] = 30;
+  arr[n++] = 20;
+  arr[n++] = 50;
+  for (int i=0; i<n; ++i) 
+    std::cout << arr[i] << std::endl;
+ 
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <typeinfo>
+void printObject(void*);
+int main(){
+    class A{public:A();};
+    void printObject(void *){std::cout<<"in A constructor"<<std::endl;}
+    new A();printObject(nullptr);  
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std; 
+int main()
+{
+	cout << "Hello World.";
+	return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std; 
+int main()
+{
+	cout << "Hello World.";
+	return 0;
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+void main()
+{
+ cout << "Hello World." <<endl;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace cout; 
+int main()
+{
+	cout;
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	int i;
+	cout << "Hello World.";
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std; 
+class Person
+{
+	int num;
+	string nName;
+	string sex;
+	public:
+	void show()
+	{
+	    cout << num << ", " << nName << ", " << sex << endl;
+	}
+} p, p1;
+void main()
+{
+	cout << "P1.num = " << p1.num << endl;
+	cout << "P.num = " << p.num << endl;
+	p1.num = (int)p.num + 1;
+	cout << "P1.num = " << p1.num << endl;
+	p.show();
+	p.sex = "male";
+	p.nName = "john";
+	p.show();
+}
+ 
+#include <iostream>
+using namespace std; 
+class Person
+{
+	public:
+	void show()
+	{
+		cout << num << ", " << nName << ", " << sex << endl;
+	}
+} p;
+class Person1
+{
+	public:
+	p.show(); 
+	p.nName = "peter";
+	p.show();
+} p1;
+void main()
+{
+	Person p;
+	Person1 p1;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main()
+{
+	int i;
+	cout << "Hello World.";
+	return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	int i;
+	cout << "Hello World.";
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	cout << "Hello World.";
+  return 0;
+}
+
+/*
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	int i;
+	cout << "Hello World.";
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	int i=10;
+	cout << "Hello World";
+	i--;
+	cout << "\n";
+	  
+	cout << i;
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	int i;
+	cout << "Hello World.";
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main()
+{
+	int i=10;
+	cout << "Hello World";
+	i--;
+	cout << "\n";
+	cout << i;
+	return 0;
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	string s1 ("Hello World");
+	string s2 = "Hello World";  
+	s1 = "Hello World!";
+	cout << s1;
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	int i=10;
+	cout << "Hello World";
+	i--;
+	cout << "\n";
+	cout << i;
+
+	static_cast<int>(0);
+	auto s = static_cast<float>(i);
+	cout << "float value: "<<s<< "\n";
+
+	long int l = l;
+	cout << "int value: "<< l<< "\n";
+
+	cout << (i << 1);
+	cout << -(double)i;
+
+  int a = 20;
+  int b = -20;
+  int c = a + b;
+  long long d = a;
+  int e = a << b;
+	cout << a << "+" << b <<" = " << c<<" (resulting in "<< d<<") <==> " << e << endl;
+
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	int i=10;
+	cout << "Hello World";
+	i--;
+	cout << "\n";
+	cout << i;
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int a = 100;
+double b = 96.0;
+class MyClass {
+public:
+	void print() {
+		cout << a << endl;
+		cout << b << endl;
+	}
+};
+MyClass m;
+m.print();
+int main()
+{
+	m.print();
+	return 0;
+}
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+	int i,l=100,n=2000;
+	cout << "Hello World";
+	do{
+		i=l++;
+	} while (i!=n);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l--;
+	} while (i);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l++;
+	} while (i);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l--;
+	} while (i);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l--;
+	} while (i);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l++;
+		cout << "\n";
+		cout << "Hello World";
+		do{
+			i=l++;
+		} while (i);
+	} while (i);
+	
+	cout << "\n";
+	
+	int j=0;
+
+	do{
+		j++;
+		if (j == 5)
+			cout << endl;
+	} while (j<=5);
+	cout << "\n";
+	do{
+		j--;
+		if (j < 5)
+			cout << endl;
+	} while (j>=5);
+	cout << "\n";
+
+	int k=0;
+	j=0;
+
+	do{
+		i=k++;
+		if (j++!= 2)
+			cout << "Hello ";
+	} while (i<=10);
+	cout << "\n";
+
+	for (i=0; i<5; i++)
+		cout << i;
+
+	int a[]={1,2,3,4,5};
+	int ptr[2]={1,2};
+	int b[2]={10,20};
+	cout << "Address of " << &a[2] << " is :" << &b << endl;
+	cout << "Address of " << &a[3] << " is :" << &b << endl;
+
+	int len = 5;
+	int *nPtr = &len;
+	cout << "Address of " << nPtr << " is :" << &a << endl;
+
+	i=3;
+	while (i<10)
+	{
+		i*=2;
+		cout << i << "\n";
+	}
+	cout << "\n";
+	i=3;
+	do
+	{
+		i*=2;
+		cout << i << "\n";
+	} while (i<10);
+	
+	float *fPtr = new float [5];
+	for (int i=3; i>=10; i--)
+		fPtr[i]=i;
+	for (int i=0; i<5; i++)
+		cout << fPtr[i] << "\n";
+	
+	char m[5]{'h','e','l','l','o'};
+	char *p=&m[2];
+	char *c = p;
+	for (int i=2; i>0; i--)
+	{
+		*c++ = *p;
+		while (*p =='')
+			p++;
+	}
+	*c = '\0';
+	p = ++c;
+	while *p ==''
+		p++;
+	*p = '\0';
+	int *s = {3,5,7};
+	 
+	int *t = &s[1];
+	int *u = &s[1] - &s[1] + 1;  
+
+	cout << "&s=" << &s << "\n";
+	cout << "&t=" << &t << "\n";
+	cout << "&u=" << &u << "\n";
+
+	int a[2][3]{{10,2
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <chrono>
+
+struct Person {
+	std::string name;
+	double height;
+	float weight;
+};
+
+static std::chrono::high_resolution_clock::time_point now() {
+	const auto ts = std::chrono::high_resolution_clock::now();
+	return ts;
+}
+
+static std::chrono::milliseconds time_diff(const std::chrono::high_resolution_clock::time_point& a, 
+					              const std::chrono::high_resolution_clock::time_point& b) {
+	auto d = std::chrono::time_point_cast < std::chrono::milliseconds >(b-a);
+	return d;
+}
+
+static void time_func(int n, Person* people) {
+	auto t0 = now();
+	for (int i=0; i<n; i++) {
+		people[i].name + ": " + std::to_string(people[i].height);
+	}
+	auto t1 = now();
+	std::iostream << time_diff(t1, t0).count()  << " ms" << std::endl;
+}
+
+ 
+ 
+
+int main() {
+	Person people[] = {
+		{"Niko", 182.4, 60.8},
+		{"Kasparov", 199.17, 55.6},
+		{"Pavel", 189.8, 65.2},
+		{"Evelyn", 162.0, 53.2},
+		{"Rashid", 169.0, 58}
+	};
+
+	time_func(4, people);
+
+	return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main()
+{
+    std::array<bool, 100> a;
+   
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+  }
+};
+
+int main()
+{
+  MyClass mc1;  
+
+   
+  MyClass mc2 = mc1;  
+
+  return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int f()
+{
+    auto x = +5;
+}
+
+int main()
+{
+    f();
+    std::cout << x;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <vector>
+using namespace std;
+
+int main() 
+{	 
+	vector<int> v1,v2; 
+	const int initval = 10; 
+	
+	 			 
+	v1.push_back(-1);											 
+	vector<int>::iterator i = v1.begin();						 
+	
+	cout << '\n' << i << '\n';										 
+	v1.push_back(-8);										 
+	cout << '\n' << i << '\n';										 
+	v2.push_back(-8);										 
+	
+	cout << '\n' << v1.size() << '\n';							 
+	cout << '\n' << v1.back() << '\n';								 
+	
+	 
+	v1.insert(v1.begin(), 1, 3, 5, 7);
+	cout << '\n' << v1.begin() << '\n';							 
+	cout << '\n' << v1.end() << '\n';							 
+	
+	 
+	v1.insert(v1.begin(), initval);
+	cout << '\n' << v1.begin() << '\n';							 
+	cout << '\n' << v1.back() << '\n';							 
+	
+	
+	cout << '\n';
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc1;  
+  MyClass mc2 = mc1;  
+  return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class MyClass
+{
+public:
+  MyClass()
+  {
+
+  }
+  
+};
+int main()
+{
+  MyClass mc;
+  
+  return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc1;  
+  mc1 = MyClass();  
+  return 0;
+}
+ 
+#include <iostream>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+    myFunction<bool> f = [](int i) { return i % 2 == 0; };
+    f(1);
+  }
+public:
+  template<class T>
+  void myFunction(T t)
+  {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyFunction " << t << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc1;  
+  mc1.myFunction<int>(17);  
+  return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 12; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc;
+
+   
+  mc.operator=(std::move(mc2));    
+  return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc1;
+  
+  MyClass *pMyClass1 = new (std::nothrow) MyClass();
+  if (!pMyClass1) {
+    std::cout << "pMyClass1 is null!" << std::endl;
+    delete pMyClass1;
+    return 2;
+  }
+  
+  std::cout << "pMyClass1: " << pMyClass1 << std::endl;
+  
+ delete pMyClass1;
+ return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 10; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc1;  
+  MyClass mc2;
+
+  mc1 = mc1;
+  
+  std::cout << "myClass 1: " << typeid(mc1).name() << std::endl;
+  std::cout << "myClass 2: " << typeid(mc2).name() << std::endl;
+  
+  return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+using std::cout;    
+
+ 
+
+/* class A
+{
+  public:
+    A() { cout<<"constructor A"<<endl; }
+     
+    ~A(){ cout<<"destructive constructor destroy"<<endl; }
+ 
+};
+
+class Z { };
+
+class X
+{
+  public:
+      X() { cout<<"constructor X"; }
+      X(X const &) { cout<<"constructor clone"; }
+      void copy(X const &x) { cout<<"copy constructor "+x.get(); }
+      X &operator=(X const &) { cout<<"assign operator"<<x.get(); return *this; }
+      Z &getZ() { return *new Z(); }
+      ~X() { cout<<"destructor X"; }
+private:
+    Z x_;
+};
+
+class Y
+{
+    public:
+        Y() { cout<<"constructor Y"; }
+        Y(const Y &) { cout<<"constructor clone"; }
+        void move(Y &&yy) { cout<<"move constructor"; }
+        ~Y() { cout<<"destructive destructor Y"; }
+};
+
+
+int main()
+{
+   
+  a();
+  b();
+  c();
+  d();
+  e();
+  f();
+  g();
+  h1();
+  h2();
+  i();
+  j();
+  k();
+   
+   
+
+   
+  X y("a");
+  X x = "b";
+  y.copy(x);
+  x = y;    
+  Z z = x.getZ();   
+  cout<<"z: "<<z<<endl;
+  delete z;           
+  x.move(z);   
+  cout<<"z is already deleted"<<endl;
+
+  X zz("zz");
+  cout<<"x: <<x<<endl; // z's copy constructor and y's constructor
+  cout<<"zz: "<<zz<<endl;  
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+namespace complex_support
+{
+    class complex
+    {
+    public:
+        complex() = default;
+        complex(float x = 0, float y = 0) : x_{x}, y_{y} {}
+        complex(const complex& c) { *this = c; }
+        complex operator + (const complex& c) { return complex{x_ + c.x_, y_ + c.y_}; }
+        complex operator / (const complex& c) { return complex{x_ / c.x_, y_ / c.x_}; }
+        complex operator * (const complex& c) { return complex{x_ * c.x_ - y_ * c.y_ / c.x_, x_ * c.y_ + y_ * c.x_ / c.x_}; }
+        complex operator * (const float f) { return complex{x_ * f, y_ * f}; }
+
+        float x_, y_;
+        friend std::ostream& operator << (std::ostream& os, const complex& c);
+    };
+
+    std::ostream& operator << (std::ostream& os, const complex& c);
+     
+    int main() {
+      complex c1 = 1;
+      complex c2 = complex(3, 2);
+      complex c3 = (c1 / c2) - 1;
+      complex c4 = c1 * c2;
+      std::cout << c2 << " + " << c3 << " = " << c4 << std::endl;
+      return 0;
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+namespace {
+  namespace foo1 = foo::foo;
+  foo1::Foo foo;
+}
+
+#include <iostream>
+
+void foo()
+{
+  namespace foo = foo1;
+  foo::Foo foo;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+void print_data(int data)
+{
+    std::cout << "Printed int: " << data << std::endl;
+}
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+void print_data(int data)
+{
+    std::cout << "Printed int: " << data << std::endl;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main() {
+    std::cout << "Test Data: ";
+    int data = 42;
+    print_data(data);
+     
+    std::cout << "end." << std::endl;
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+ 
+ 
+struct file1
+{
+    file1();
+    file1(const file1&);
+    file1& operator=(const file1&);
+    int func2(const std::string&,
+               const std::string&);
+    const char * func1(std::string);
+};
+void print_file(const file1);
+void print_data(const file1);
+ 
+#include <string>
+#include <iostream>
+struct my_class
+{
+    std::string s1;
+    int i1;
+     
+    my_class(std::string && rhs1, int rhs2);
+    my_class& operator=(const my_class&);
+    my_class(my_class&& rhs) noexcept;
+    int i2;
+    ~my_class();
+    friend std::ostream& operator<< (std::ostream& os, const my_class& my);
+};
+int bar(const my_class&);
+int foo(std::string);
+ 
+#include <iostream>
+#include <string>
+struct file2
+{
+    file2();
+    file2(const file2&);
+    file2& operator=(const file2&);
+    friend std::ostream& operator<< (std::ostream& os, const file2&)
+};
+struct my_class25;
+my_class25 bar(const my_class25&);
+file2 g(std::string);
+ 
+ 
+ 
+#include <ios>                    
+#include <string>                 
+#include <iostream>               
+struct my_class26;             
+std::istream& operator>>(std::istream &inStream, my_class26&);
+std::ostream& operator<<(std::ostream &outStream, const my_class26&);
+ 
+int bar(const my_class26&);
+int foo(std::string);
+ 
+int bar_mut(my_class26&);
+int foo_mut(std::string);
+ 
+#include <std.h>                   
+#include <iostream>               
+template <typename T, typename U>     
+std::bit_reference<U> get_bit_by_addr(T* pT)  
+{
+    std::cout << "Here pT is a pointer of type " << typeid(pT).name() << std::endl;  
+     
+     
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+void print_data(int* data)
+{
+    std::cout << "Printed int*: " << data << std::endl;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+ 
+ 
+#include <vector>
+void print_data(std::vector<int> data)
+{
+    for (int element : data)
+        std::cout << "Printed int: " << element << std::endl;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+void print_data(int& data)
+{
+    std::cout << "Printed int: " << data << std::endl;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <vector>
+#include <cmath>
+#include <string>
+
+int main()
+{
+  using namespace std;
+
+  string str;
+
+  vector<double> vet( 2 ), vec2( 2 );
+   
+   
+   
+   
+   
+   
+
+   
+  vec2 = vec( 3, 3.0, 3UL );
+   
+   
+   
+   
+   
+
+   
+  for( auto x : vet )
+  {
+    cout << x << endl;
+  }
+
+  for( unsigned i = 0; i < vec2.size(); i ++ )
+  {
+    std::cout << vec2[i] << " ";
+  }
+
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+using namespace std;
+
+int main()
+{
+	typedef int (*FunPtr)( int );
+	FunPtr fp;
+	int *ip;
+	int (*ip2)() ()=nullptr;		 
+	FunPtr f1 = ip;  
+	ip2();
+	
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <string>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+struct Base {};
+struct Derived : Base {};
+
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+
+int main() {
+    Base bderived2{};
+    printderived();
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+struct Base {};
+struct Derived : Base {};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Base bderived2{};
+    printderived();
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Base {};
+struct Derived : public Base {};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Base bderived2{};
+    printderived();
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main() {
+    return 11;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Base {};
+struct Derived : public Base {};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Base bderived2{};
+    printderived();
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class Container;
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+Container::Container() {}
+Container::Container(Container const&) = default;
+void printderived(Derived) {
+    std::cout << "derived" << std::endl;
+}
+#pragma GCC diagnostic ignored "-Weffc++"
+class Container
+{
+public:
+   Container(){ }
+   void Container(){ }
+   
+private:
+   Container(Container const&);
+};
+int main() {
+    Container c;
+    Container d;
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+void printderived() {
+    std::cout << "derived\n";
+}
+int main() {
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+struct Base {};
+struct Derived : public Base {};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Base bderived2{};
+    printderived();
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Derived {
+    Base;
+};
+Derived d2{};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Base bderived2{};
+    printderived();
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Base {};
+struct Derived : public Base {};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Derived a{2}, b{};
+    printderived();
+    std::cout << b << std::endl;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Base {};
+struct Derived : public Base {};
+const Derived B{0};
+Derived const bderived{};
+Derived const bderived2{};
+Derived myDerived{0};
+int main() {
+    myDerived=B;
+    printderived();
+    myDerived=bderived;
+    printderived();
+    myDerived=bderived2;
+    printderived();
+    return 0;    
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Base {
+    virtual void f1() = 0;  
+    virtual void f2() = 0;
+};
+struct Derived : public Base {
+    void f1() {}
+    void f2() {}
+};
+void printderived() {
+    Derived cderived{};
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    printderived();
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Base {};
+struct Derived : public Base {};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+struct Base {};
+struct Derived : public Base {};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Derived : public Base {};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    typedef Derived bderived;
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+struct Base {};
+struct Derived : public Base {};
+
+ 
+ 
+ 
+ 
+
+ 
+void printderived() {
+    std::cout << Derived() << std::endl;
+}
+
+int main() {
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Base {
+  virtual ~Base() = default;
+};
+struct Derived : public Base {
+  virtual ~Derived() = default;
+};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+struct Base {};
+struct Derived : public Base {};
+void printderived() {
+    cout << "derived" << endl;
+}
+int main() {
+    new Derived;
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+struct Base {};
+struct Derived : public Base {};
+struct Base2 {};
+struct Derived2 : public Base2 {};
+int main() {
+    auto *pBase = new Base();
+    auto *pBase2 = new Base2{};
+    std::cout << "derived" << std::endl;
+     
+    Derived bderived = new Derived{};
+    std::cout << "derived2" << std::endl;
+    pBase->~Base();
+    pBase2->~Base();
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+struct Base {};
+struct Derived : public Base {};
+void printderived() {
+    cout << "derived" << endl;
+}
+int main() {
+    new Derived;
+    printderived();
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+struct Base {};
+struct Derived : virtual Base {
+    void printderived() {
+        cout << "derived" << endl;
+    }
+};
+int main() {
+    new Derived;
+    printderived();
+}
+ 
+#include <iostream>
+using namespace std;
+struct Base {};
+struct Derived : virtual Base {
+    void printderived() {
+        cout << "derived" << endl;
+    }
+};
+int main() {
+    Derived d;
+    d.printderived();
+    return 0;
+}
+ 
+#include <iostream>
+using namespace std;
+
+string getString() {
+    string text, temp;
+    cout << "Enter input string > ";
+    cin >> text;
+    return text;
+}
+
+int main() {
+    cout << getString() << endl;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+struct Base {};
+struct Derived : public Base {};
+ 
+#include <iostream>
+using namespace std;
+struct Derived : public Base {};
+void printderived() {
+    cout << "derived" << endl;
+}
+void printbase() {
+    cout << "Base(Derived class)" << endl;
+}
+int main() {
+    printderived();
+    printbase();
+    return 0;
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+class Base {
+public:
+     
+    Base() {
+        cout << "Base" << endl;
+    }
+    Base(const Base& b) {
+        cout << "Base(const Base& b)" << endl;
+    }
+     
+    virtual ~Base() {
+        cout << "~Base" << endl;
+    }
+};
+class Derived1 : public Base {
+public:
+    Derived1() {
+        cout << "Derived1" << endl;
+    }
+    Derived1(const Derived1& b) {
+        cout << "Derived1(const Derived1& b)" << endl;
+    }
+    Derived1& operator+=(const Derived1& b) {
+        cout << "Derived1& operator++(const Derived1& b)" << endl;
+        return *this;
+    }
+    Derived1 operator++(int) const {
+        cout << "Derived1 operator++(const Derived1& b)" << endl;
+        Derived1 s1 = *this;
+        ++*this;
+        return s1;
+    }
+     
+    ~Derived1() {
+        cout << "~Derived1" << endl;
+    }
+};
+class Derived2 {
+public:
+    Derived2() {
+        cout << "Derived2" << endl;
+    }
+    Derived2(const Derived2& b) {
+        cout << "Derived2(const Derived2& b)" << endl;
+    }
+    Derived2 operator++(int) const {
+        cout << "Derived2 operator++(const Derived2& b)" << endl;
+        Derived2 s2 = *this;
+        ++*this;
+        return s2;
+    }
+     
+    ~Derived2() {
+        cout << "~Derived2" << endl;
+    }
+};
+int main() {
+    Base b;
+    Base b2 = b;
+    b2++;
+    Base b3 = b3;
+    Derived d;
+    Derived d2 = d;
+    try {
+        b2 *= b2;
+    }  
+     
+    try {
+        d++;
+    }  
+    Derived2 d3;
+    d2 += d2;
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+struct Base {
+    Base() = default;
+};
+class Derived : public Base {};
+void printderived() {
+    cout << "derived" << endl;
+}
+int main() {
+    new Derived;
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+void printderived() {
+    cout << "derived" << endl;
+}
+int main() {
+    printderived();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+class myClass
+{
+private:
+     
+};
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+class foo {};
+int main() {
+    foo a = {};
+    std::cout << a;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+#if 0
+cout << "hello" << endl;
+# else
+int i;
+i++;
+#endif
+
+int main()
+{
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+using namespace std;
+
+int print_array(int x[], int n);
+
+int print_matrix(int a[], int nR, int nC);
+
+int main()
+{
+    int n,m,i;
+    cout << "Enter number of rows: ";
+    cin >> n;
+    cout << "Enter number of columns: ";
+    cin >> m;
+    int a[n][m];
+    for(i=0; i<n; i++)
+    {
+        for(j=0; j<m; j++)
+            cin >> a[i][j];
+    }
+     
+    cout << "Array: ";
+    print_array(a, n*m);
+     
+    cout << "Matrix:\n";
+    print_matrix(a, n, m);
+    int d[10] = {2.0, 5.0, 10.0, 15};       
+    cout << d << endl;
+    double b[2][2] = {12.0,23.0};
+    cout << b[0][1];
+    cout << endl << endl;
+     
+    cout << "Matrix:\n";
+    for(i=0; i<2; i++)
+    {
+        for(j=0; j<2; j++)
+            cout << a[i][j] << " ";
+        cout << endl;
+    }
+    return 0;        
+}
+
+ 
+ 
+ 
+ 
+int print_array(int x[], int n)
+{
+    double sum, temp;
+    int i;
+    for(i=0; i<n; i++)
+    {
+        sum=sum+x[i];
+        temp=sum;
+    }
+     
+    sum=temp/n;
+    cout << sum <<endl;
+    return 0;
+}
+
+ 
+ 
+ 
+ 
+int print_matrix(int a[], int nR, int nC)
+{
+    int i,j;
+	cout << "Matrix: ";
+    for(i=0; i<nR; i++)
+    {
+        for(j=0; j<nC; j++)   
+            cout << a[i][j] << " ";
+        cout << endl;
+    }
+
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+[VERBOSE] ========== sample =========
