@@ -1,22 +1,19 @@
 from flask import Flask, render_template
-from read_demo_data import get_demo_data
-from read_democvc5_data import get_democvc5_data
+from read_outputs_data import get_outputs_data
 
 app = Flask(__name__)
 
 @app.route('/')
 def outputs():
-    directory = 'outputs/demo'
-    data = get_demo_data(directory)
+    demo_directory = 'outputs/demo'
+    demo_data = get_outputs_data(demo_directory)
+    
+    cvc5_directory = 'outputs/demo_coverage_cvc5'
+    cvc5_data = get_outputs_data(cvc5_directory)
 
-    return render_template('demo_outputs.html', demo_outputs=data)
-
-@app.route('/democvc5_outputs')
-def outputs_cvc5():
-    directory = 'outputs/demo_coverage_cvc5'
-    data = get_democvc5_data(directory)
-
-    return render_template('democvc5_outputs.html', democvc5_outputs=data)
+    return render_template('outputs.html', 
+                           demo_outputs=demo_data, 
+                           democvc5_outputs=cvc5_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
