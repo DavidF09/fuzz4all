@@ -1,0 +1,5 @@
+(set-logic ALL)
+(declare-fun f (Int) Int)
+(assert (< (f 1) (f 2)))
+(check-sat)
+(exit)

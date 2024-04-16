@@ -1,0 +1,5 @@
+(set-logic ALL)
+(declare-const x Int)
+(declare-const y Int)
+(assert (= (forall ((x Int)) (= x y)) true))
+(exit)

@@ -1,0 +1,6 @@
+(set-logic ALL)
+(declare-fun x () Real)
+(declare-fun r () Int)
+(assert (< x r))
+(check-sat)
+(exit)
