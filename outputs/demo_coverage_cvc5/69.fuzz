@@ -1,0 +1,14 @@
+(set-logic ALL)
+(set-info :unsat-core true)
+(assert (= (+ x (* 2 y)) 24))
+(check-sat)
+(exit)
+
+(declare-const x Real)
+(declare-const y Real)
+(assert (and (= x  (+ 2 (* y 0))))
+(assert (or (= x (* y 0)) (= x (+ 3 (* y 0))))
+(assert (or (= x (* y 0)) (= x (+ (* 2 y) (* 3 y)))))
+(assert (not (= x  (* (+ 2 (* y (* x y))) 1))))
+(check-sat)
+

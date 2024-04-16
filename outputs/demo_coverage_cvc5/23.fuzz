@@ -1,0 +1,5 @@
+(set-logic ALL)
+ 
+(declare-fun a () Int) 
+(assert (<= 7 (* 100 a))) 
+(check-sat) 

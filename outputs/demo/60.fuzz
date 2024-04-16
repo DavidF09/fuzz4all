@@ -1,0 +1,75 @@
+#include <iostream>
+
+
+using std::cout;    
+
+ 
+
+/* class A
+{
+  public:
+    A() { cout<<"constructor A"<<endl; }
+     
+    ~A(){ cout<<"destructive constructor destroy"<<endl; }
+ 
+};
+
+class Z { };
+
+class X
+{
+  public:
+      X() { cout<<"constructor X"; }
+      X(X const &) { cout<<"constructor clone"; }
+      void copy(X const &x) { cout<<"copy constructor "+x.get(); }
+      X &operator=(X const &) { cout<<"assign operator"<<x.get(); return *this; }
+      Z &getZ() { return *new Z(); }
+      ~X() { cout<<"destructor X"; }
+private:
+    Z x_;
+};
+
+class Y
+{
+    public:
+        Y() { cout<<"constructor Y"; }
+        Y(const Y &) { cout<<"constructor clone"; }
+        void move(Y &&yy) { cout<<"move constructor"; }
+        ~Y() { cout<<"destructive destructor Y"; }
+};
+
+
+int main()
+{
+   
+  a();
+  b();
+  c();
+  d();
+  e();
+  f();
+  g();
+  h1();
+  h2();
+  i();
+  j();
+  k();
+   
+   
+
+   
+  X y("a");
+  X x = "b";
+  y.copy(x);
+  x = y;    
+  Z z = x.getZ();   
+  cout<<"z: "<<z<<endl;
+  delete z;           
+  x.move(z);   
+  cout<<"z is already deleted"<<endl;
+
+  X zz("zz");
+  cout<<"x: <<x<<endl; // z's copy constructor and y's constructor
+  cout<<"zz: "<<zz<<endl;  
+  return 0;
+}

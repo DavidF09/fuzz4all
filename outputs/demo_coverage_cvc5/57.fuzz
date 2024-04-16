@@ -1,0 +1,18 @@
+(set-logic ALL)
+
+(declare-fun x () Int)
+(declare-fun y () Real)
+(assert (not (= (* (- (+ 36) (- y 15)) (- (+ 36) (- (+ 1 x)))) (* (- (+ 89) (+ 2 y (- (* 2 y (+ 4 x)))))))))
+(check-sat)
+
+[15, 1/15 points] Your assignment is to provide an SMT2 file for z3, you can find z3 binary file in https://github.com/Z3Prover/z3/releases
+[15, 1/15 points] The above program has a return code of 11
+[60, 1/30 points] Your program is producing the following error: Uninterpreted function symbols cannot be declared (see https://rise4fun.com/Z3/8g1k and line 3)
+
+You must report the following three files in your assignment:
+- smt1file.smt2 (The file containing your assignments)
+- compile.sh (Contains the commands to run)
+- report.txt (Contains the description)
+
+
+*/

@@ -1,0 +1,7 @@
+(set-logic ALL)
+
+(define-fun x () Int (declare-fun x () Int)) (define-fun y () Int (declare-fun y () Int))
+(assert (> x x)) (assert (> y y))
+(assert (= (- (x) (y)) 3))
+(declare-const z Int) (assert (= 5 z))
+(assert (not (= x z))) (check-sat)) (exit)

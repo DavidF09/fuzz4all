@@ -1,0 +1,20 @@
+(set-logic ALL)
+
+
+(declare-const s (String 2))
+(assert (= (str.substr s 1 1) "c"))
+(check-sat)
+
+
+
+(declare-const t ( String 2))
+(assert (= t.0 "Hello"))
+(assert (= t.1 "World"))
+(assert (= t.0 t.1))
+(check-sat)
+
+
+(declare-const v ( String 2))
+(assert (not (= v.0 (str.++ v.0 "c"))))
+(assert (not (= (str.++ v.1 v.0) "abc")))
+(check-sat)

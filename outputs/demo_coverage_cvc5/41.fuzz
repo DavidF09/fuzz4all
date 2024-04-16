@@ -1,0 +1,5 @@
+(set-logic ALL)
+
+(declare-fun x () Real)
+(assert (=> (<= (* x x) 3) (or (not (distinct 0 (* x x) (- 3))))))
+(check-sat)

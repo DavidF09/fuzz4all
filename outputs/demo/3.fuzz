@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+
+void testVariableTypeDecl() {
+    int x = 10;
+    auto y = x + 10;
+    auto y2 = "hello";
+    
+    cout << "x: " << x << " y: " << y << " y2: " << y2;
+}
+
+ 
+ 
+int main() {
+    testVariableTypeDecl();
+     
+
+     
+    const int x = 10;
+    
+    testVariableTypeDecl2();  
+
+    const auto y = x + 10;  
+
+    cout << "x: " << x << " y: " << y;
+     
+     
+    
+    return 0;
+}

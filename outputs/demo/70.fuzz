@@ -1,0 +1,41 @@
+#include <iostream>
+
+#include <vector>
+#include <cmath>
+#include <string>
+
+int main()
+{
+  using namespace std;
+
+  string str;
+
+  vector<double> vet( 2 ), vec2( 2 );
+   
+   
+   
+   
+   
+   
+
+   
+  vec2 = vec( 3, 3.0, 3UL );
+   
+   
+   
+   
+   
+
+   
+  for( auto x : vet )
+  {
+    cout << x << endl;
+  }
+
+  for( unsigned i = 0; i < vec2.size(); i ++ )
+  {
+    std::cout << vec2[i] << " ";
+  }
+
+  return 0;
+}

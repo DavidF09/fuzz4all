@@ -1,0 +1,13 @@
+(set-logic ALL)
+
+
+(declare-fun a () Int)
+
+(declare-fun b () Real)
+
+(declare-fun c () Real)
+
+(declare-fun f () Real)
+
+(assert (= f (real 4) 2))
+(check-sat)

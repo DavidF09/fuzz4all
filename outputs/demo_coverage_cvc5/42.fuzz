@@ -1,0 +1,34 @@
+(set-logic ALL)
+
+
+
+(declare-datatypes ( ) ((Complex Number Number Real)))
+
+(define-funs-rec ((Re Real) (Im Real) (Zero) (i (Re (Im (Zero)))))
+
+(declare-datatypes () ((Real Real (rconst Real)) (is_int (rnum Real))))
+
+(declare-datatypes () ((int Int (zero Int)))) 
+
+(define-funs-rec ((addReal x y (addInt x y)))
+
+
+(declare-fun minus (Real Real) Real)
+(declare-fun plus (Real Real) Real)
+(declare-fun multiply (Real Real) Real)
+(declare-fun divide (Real Real) Real)
+
+(assert (ite (is_int (rnum x)) 
+            (= (plus (zero) x) x)
+            (= (multiply (rnum x) (rnum y)) 
+               (divide (multiply x y) (zero)))))
+
+(assert (equal (addReal (Re x) (i (Im y)) x) y))
+(assert (and (not (= x y))
+             (not (= x (i (Re y)))))
+(assert (and (= (zero) (addReal (i x) (i x)))
+             (= (zero) (addInt 0 (zero)))) 
+(assert (not (= x y))
+(not (= x z)))
+(check-sat)
+(exit)

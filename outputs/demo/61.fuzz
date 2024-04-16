@@ -1,0 +1,31 @@
+#include <iostream>
+
+
+namespace complex_support
+{
+    class complex
+    {
+    public:
+        complex() = default;
+        complex(float x = 0, float y = 0) : x_{x}, y_{y} {}
+        complex(const complex& c) { *this = c; }
+        complex operator + (const complex& c) { return complex{x_ + c.x_, y_ + c.y_}; }
+        complex operator / (const complex& c) { return complex{x_ / c.x_, y_ / c.x_}; }
+        complex operator * (const complex& c) { return complex{x_ * c.x_ - y_ * c.y_ / c.x_, x_ * c.y_ + y_ * c.x_ / c.x_}; }
+        complex operator * (const float f) { return complex{x_ * f, y_ * f}; }
+
+        float x_, y_;
+        friend std::ostream& operator << (std::ostream& os, const complex& c);
+    };
+
+    std::ostream& operator << (std::ostream& os, const complex& c);
+     
+    int main() {
+      complex c1 = 1;
+      complex c2 = complex(3, 2);
+      complex c3 = (c1 / c2) - 1;
+      complex c4 = c1 * c2;
+      std::cout << c2 << " + " << c3 << " = " << c4 << std::endl;
+      return 0;
+    }
+}

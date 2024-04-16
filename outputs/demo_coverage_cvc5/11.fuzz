@@ -1,0 +1,36 @@
+(set-logic ALL)
+
+
+(declare-fun x () (Array Int Int))
+
+(declare-fun y () (Array Int Int))
+
+(define-fun f_ (i j) Int
+  (select x i))
+
+(define-fun g_ (i) Int
+  (select y i))
+
+(assert
+(and
+ (not (= ((_ + (0 (* f_ 1))) (g_ 1)) (2 * g_ 3)))
+ (= ((_ * 1) (f_ 2 0) (g_ 1)) 1)))
+
+
+(declare-sort Int 0)
+
+
+(define-fun h (x) Int
+  (let ((n 0))
+    (ite (not (= x 0))
+      ((_ + 1) ((_ h ((_ div x) 2))) ((_ h ((_ rem x) 2))))
+      0)
+    )
+)
+
+(assert (= (h 3) 1))
+(assert (= (h 4) 2))
+
+(check-sat)
+(get-status)
+(get-value (x y))

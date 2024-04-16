@@ -1,0 +1,7 @@
+#include <iostream>
+
+class foo {};
+int main() {
+    foo a = {};
+    std::cout << a;
+}

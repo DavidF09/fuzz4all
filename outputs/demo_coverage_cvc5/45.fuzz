@@ -1,0 +1,73 @@
+(set-logic ALL)
+
+(declare-sort int 0)
+(declare-sort float 0)
+(declare-fun to_int (float) float)
+(declare-fun to_float (int) float)
+(declare-fun to_bool(float) float)
+(declare-fun to_int2 (float) int)
+(assert
+  (distinct (to_int2 1) 1 ))
+
+
+
+
+
+
+
+
+(declare-fun x8 () int)
+(declare-fun x9 () int)
+(declare-fun x10 () int)
+(declare-fun x11 () int)
+(declare-fun x12 () int)
+(declare-fun x13 () int)
+(declare-fun x14 () int)
+(declare-fun x15 () int)
+(declare-fun x16 () int)
+(declare-fun x17 () int)
+(declare-fun x18 () int)
+(declare-fun x19 () int)
+(declare-fun x20 () int)
+(declare-fun x21 () int)
+(declare-fun x22 () int)
+(declare-fun x23 () int)
+(declare-fun x24 () int)
+(declare-fun x25 () int)
+(declare-fun x26 () int)
+(declare-fun x27 () int)
+(declare-fun x28 () int)
+(declare-fun x29 () int)
+(declare-fun x30 () int)
+(declare-fun x31 () int)
+(declare-fun x32 () int)
+
+
+
+
+
+
+
+(assert
+ (forall ((x int))
+  (=> (= 0 x) x)))
+
+
+
+
+(assert  (forall ((x int))(=> (= 0 x) x)))
+(check-sat)
+(check-sat)
+(declare-fun y () int)
+(declare-fun z () int)
+(assert
+  (forall ((z int)
+    (y int))
+    (=> (or(and (= x8 (* (* y 2) 4)) (= x9 1) (= x10 1) (= x11 2) (= x12 2))
+            (xor (=> (= x11 1) (= x13 7))
+              (= y x)))
+            (=> (= z x14)
+              (= y z)))))
+(check-sat)
+(check-sat)
+(check-sat)

@@ -1,0 +1,43 @@
+(set-logic ALL)#include <iostream>
+
+#include <string>
+#include <list>
+ 
+
+#include <sstream>
+using namespace std;
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+class TestClass{
+private:
+	class A {
+		public:
+			A() : a(0) {}
+			A(int v) { a = v; }
+
+			int a;
+	};
+	A a;
+public:
+	TestClass(int i) {
+		a.set(i);
+	}
+
+	void print() {
+		cout << a.a << " ";
+	}
+
+};
+
+int main() {
+	TestClass t;
+	t.print();
+}

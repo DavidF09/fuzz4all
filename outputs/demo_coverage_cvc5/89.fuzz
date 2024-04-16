@@ -1,0 +1,11 @@
+(set-logic ALL)
+(set-info :unsat-core true)
+(declare-fun x () Int)
+(assert (distinct x #b10101))
+(check-sat)
+(exit)
+
+
+
+
+

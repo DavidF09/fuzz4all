@@ -1,0 +1,48 @@
+(set-logic ALL)
+
+
+
+
+
+
+
+
+(check-sat) 
+
+
+
+(exit) 
+`
+
+// smt: 'SMT2-Str' is of type 'ST_input_string' which is the type of strings representing an SMT query.
+var smt ST_input_string
+smt := st_new_input_string(smt_string)
+
+// sol: 'ST_solver' is a object of type solver. It stores all the data/information about the solver.
+// st_new_solver() returns an empty solver.
+var sol ST_solver
+sol := st_new_solver(smt)
+
+// check if smt query is valid.
+var isSat ST_result
+// Return value 'ST_timeout' indicates that the query timed out.
+// Return value 'ST_unsat' indicates that query is unsat
+// Return value 'ST_unknown' indicates that the result is unknown because of timeout/memlimit.
+// Return value 'ST_valid' indicates that query is valid and returns a model.
+
+
+// Print result to terminal and free the solver object.
+if (isSat == ST_timeout) {
+	put "smt query timed out!"
+}
+else if (isSat == ST_unsat) {
+	put "smt query is unsat!"
+}
+else if (isSat == ST_unknown) {
+	put "smt query is unknown!"
+}
+else if (isSat == ST_valid) {
+	st_print_model(sol)
+}
+
+st_free_solver(sol)

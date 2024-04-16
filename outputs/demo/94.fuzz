@@ -1,0 +1,9 @@
+#include <iostream>
+using namespace std;
+void printderived() {
+    cout << "derived" << endl;
+}
+int main() {
+    printderived();
+    return 0;
+}

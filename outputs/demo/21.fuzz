@@ -1,0 +1,7 @@
+#include <iostream>
+using std::cout; using namespace std;
+int main() {
+    int age = -3, x = 2, y = 4;
+    cout << age * x * y << endl;
+    return 0;
+}

@@ -1,0 +1,15 @@
+(set-logic ALL)
+
+(define-fun double (x1 Float) (fp #b0 x1))
+(define-fun single (x1 Float) (fp #b10 x1))
+(define-fun triple (x1 Float) (fp #b0100 x1))
+
+(declare-fun x1 Int) 
+(declare-fun x2 Bool)
+
+(assert (= (double (single x1)) (single (double x1))))
+
+(assert (= (double x1) (triple x1)))
+(assert (= x1 7))
+
+

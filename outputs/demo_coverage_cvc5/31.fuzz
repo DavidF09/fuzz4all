@@ -1,0 +1,5 @@
+(set-logic ALL)
+
+(declare-fun a_184 () Integer)
+(declare-fun a_185 () Integer)
+(declare-fun a_186 () Integer)

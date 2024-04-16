@@ -1,0 +1,19 @@
+(set-logic ALL)
+
+
+
+
+
+
+(declare-const x Int)
+(declare-const y Int)
+(assert (forall ((a Int)(b Int)(c Int)) (<= (+ (* x y) (* a b c)) 2)))
+
+(assert (exists ((a Int) (b Int) (c Int)) (= (xor (> x a) (< y b) (> c y)) a)))
+
+
+(check-sat)
+(get-model)
+
+(check-sat)
+(exit)

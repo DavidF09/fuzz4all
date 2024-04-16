@@ -1,0 +1,10 @@
+#include <iostream>
+
+#include <typeinfo>
+void printObject(void*);
+int main(){
+    class A{public:A();};
+    void printObject(void *){std::cout<<"in A constructor"<<std::endl;}
+    new A();printObject(nullptr);  
+    return 0;
+}

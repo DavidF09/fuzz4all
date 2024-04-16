@@ -1,0 +1,37 @@
+(set-logic ALL)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(declare-fun z () Int)
+(assert (= (+ (* x y) z) 20))
+(check-sat)
+(exit)
+
+
+A SMT theory (theory in the informal sense) is a set of SMT logic rules that define the behavior of various expressions and connectives. More precisely, SMT theory is a set of SMT logic rules that determine whether (or how many times) those expressions and connectives are allowed to be evaluated. In fact, the rule in each theory specifies a set (a finite collection) of (free) variable instances that are assumed fixed by the theory. 
+
+A theory has two types of rules: theories have uninterpreted function rules (often called UFs) which are not necessarily primitive, and theories have recursive function rules. A uninterpreted function rule states what functions or expressions to consider primitive or uninterpreted (which of the function symbols in the set is considered primitive or uninterpreted is not necessarily significant for a theory). A set of recursive function rules describes the behavior of recursive functions over theory variable instances and may require extra (axiomatic) facts to be asserted at the beginning.
+
+Theories cannot be asserted themselves. Instead a fact about the theory of a set of variables is asserted by asserting UFs and recursive functions that take certain variables instances to a finite set of values, and thereby create the corresponding theory.
+
+Theories cannot be asserted themselves. Instead a fact about the theory of a set of variables is asserted by asserting UFs and recursive functions that take certain variables instances to a finite set of values, and thereby create the corresponding theory.
+
+
+
+
+
+Although we generally refer to SMT theories and UFs, theories are a subset of UFs in that we typically refer to a recursive set of UFs to be a SMT theory.
+SMT theory 3
+A SMT theory (theory in the informal sense) is a set of SMT logic rules that define the behavior of various expressions and connectives. More precisely, SMT theory is a set of SMT logic rules that determine whether (or how many times) those expressions and connectives are allowed to be evaluated. In fact, the rule in each theory specifies a set (a finite collection) of (free) variable instances that are assumed fixed by the theory.
+
+A theory has two types of rules: theories have uninterpreted function rules (often called UFs) which are not necessarily primitive, and theories have recursive function rules. A uninterpreted function rule states what functions or expressions to consider primitive or uninterpreted (which of the function symbols in the set is considered primitive or uninterpreted is not necessarily significant for a theory). A set of recursive function rules describes the behavior of recursive functions over theory variable instances and may require extra (axiomatic) facts to be asserted at the beginning.
+
+Although we generally refer to SMT theories and UFs, theories are a subset of UFs in that we typically refer to a recursive set of UFs to be a SMT theory.
+
+
+
+
+
+
+A SMT theory (theory in the informal sense) is a set of SMT logic rules that define the behavior of various expressions and connectives. More precisely, SMT theory is a set of SMT logic rules that determine whether (or how many times) those expressions and connectives are allowed to be evaluated. In fact, the rule in each theory specifies a set (a finite collection) of (free) variable instances that are assumed fixed by the theory.
+
+A theory has two types of rules: theories have uninterpreted function rules (often called UFs) which are not necessarily primitive, and theories have recursive function rules. A uninterpreted function rule states what functions or expressions to consider primitive or uninterpreted (which of the function symbols in

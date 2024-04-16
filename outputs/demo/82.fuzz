@@ -1,0 +1,16 @@
+#include <iostream>
+struct Base {};
+struct Derived : public Base {};
+const Derived B{0};
+Derived const bderived{};
+Derived const bderived2{};
+Derived myDerived{0};
+int main() {
+    myDerived=B;
+    printderived();
+    myDerived=bderived;
+    printderived();
+    myDerived=bderived2;
+    printderived();
+    return 0;    
+}

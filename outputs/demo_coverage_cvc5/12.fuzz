@@ -1,0 +1,9 @@
+(set-logic ALL)
+(declare-fun mkPos ( Int )  Pos)(declare-fun pos_value ( Pos )  Int)(declare-fun leq ( Int Int )  Bool)(declare-fun min ( Int Int )  Int)
+(declare-fun rem (Int Int) Int)
+(assert (<= 0 (pos_value (mkPos 0))))
+(assert (=> (leq (pos_value (mkPos 0)) (pos_value (mkPos 1))) true))
+(assert (not (and true 
+                   true)))
+(assert (> (rem 23 5) 3))
+(assert (= (rem 3290812 4) 2))

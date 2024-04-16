@@ -1,0 +1,9 @@
+#include <iostream>
+int main ()
+{
+	float x; 
+	char s[20];
+	std::cout << "Hello World\n";
+	int z;
+	return 0;	
+}

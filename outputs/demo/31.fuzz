@@ -1,0 +1,82 @@
+#include <iostream>
+
+#include <thread>
+#include <string>
+#include <chrono>
+
+class Cpu
+{
+
+public:
+    Cpu();
+    void start();
+    void stop();
+
+private:
+    class ThreadData
+    {
+        public:
+            ThreadData(std::string newName = std::string())
+                        : currentName(newName)
+            {}
+            std::string currentName;
+    };
+    std::thread thread;
+    std::chrono::steady_clock::time_point lastTime;
+    std::chrono::milliseconds interval;
+    std::string currentName;
+};
+
+
+void Cpu::start()
+{
+    thread = threads::thread([this]()
+    {
+        for (;;)
+        {
+            lastTime = std::chrono::steady_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - lastTime);
+            std::this_thread::sleep_for(std::chrono::milliseconds(time_between_operations()));
+            std::cout << "My thread " << currentName << " last updated at " << lastTime << " for " << std::chrono::seconds(duration.count()).count() << " seconds." << std::endl;
+        }
+    });
+    std::cout << "My cpu thread started." << std::endl;
+}
+
+void Cpu::stop()
+{
+     
+    thread.join();
+    thread.join();
+    std::cout << "My cpu thread ended." << std::endl;
+}
+
+
+Cpu::Cpu()
+{
+}
+
+auto Cpu::time_between_operations()
+{
+    return interval.count();
+}
+
+
+int main()
+{
+    std::cout << "Do you want to stop CPU or continue " << std::endl
+              << "Enter " << std::endl;
+    char option = 0;
+    std::cin >> option;
+
+    if (option == 'c')
+    {
+        Cpu cp;
+        cp.start();
+    }
+    else
+    {
+        Cpu cp;
+        cp.stop();
+    }
+}

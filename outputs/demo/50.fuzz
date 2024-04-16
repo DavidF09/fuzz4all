@@ -1,0 +1,46 @@
+#include <iostream>
+
+#include <chrono>
+
+struct Person {
+	std::string name;
+	double height;
+	float weight;
+};
+
+static std::chrono::high_resolution_clock::time_point now() {
+	const auto ts = std::chrono::high_resolution_clock::now();
+	return ts;
+}
+
+static std::chrono::milliseconds time_diff(const std::chrono::high_resolution_clock::time_point& a, 
+					              const std::chrono::high_resolution_clock::time_point& b) {
+	auto d = std::chrono::time_point_cast < std::chrono::milliseconds >(b-a);
+	return d;
+}
+
+static void time_func(int n, Person* people) {
+	auto t0 = now();
+	for (int i=0; i<n; i++) {
+		people[i].name + ": " + std::to_string(people[i].height);
+	}
+	auto t1 = now();
+	std::iostream << time_diff(t1, t0).count()  << " ms" << std::endl;
+}
+
+ 
+ 
+
+int main() {
+	Person people[] = {
+		{"Niko", 182.4, 60.8},
+		{"Kasparov", 199.17, 55.6},
+		{"Pavel", 189.8, 65.2},
+		{"Evelyn", 162.0, 53.2},
+		{"Rashid", 169.0, 58}
+	};
+
+	time_func(4, people);
+
+	return 0;
+}

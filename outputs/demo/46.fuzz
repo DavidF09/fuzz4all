@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int i=10;
+	cout << "Hello World";
+	i--;
+	cout << "\n";
+	cout << i;
+
+	static_cast<int>(0);
+	auto s = static_cast<float>(i);
+	cout << "float value: "<<s<< "\n";
+
+	long int l = l;
+	cout << "int value: "<< l<< "\n";
+
+	cout << (i << 1);
+	cout << -(double)i;
+
+  int a = 20;
+  int b = -20;
+  int c = a + b;
+  long long d = a;
+  int e = a << b;
+	cout << a << "+" << b <<" = " << c<<" (resulting in "<< d<<") <==> " << e << endl;
+
+}

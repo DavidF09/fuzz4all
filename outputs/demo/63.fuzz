@@ -1,0 +1,15 @@
+#include <iostream>
+
+
+namespace {
+  namespace foo1 = foo::foo;
+  foo1::Foo foo;
+}
+
+#include <iostream>
+
+void foo()
+{
+  namespace foo = foo1;
+  foo::Foo foo;
+}

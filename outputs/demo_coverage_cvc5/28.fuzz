@@ -1,0 +1,6 @@
+(set-logic ALL)
+
+(declare-fun c () Int)
+(declare-fun d () Int)
+(push 1)
+(assert (> c d))

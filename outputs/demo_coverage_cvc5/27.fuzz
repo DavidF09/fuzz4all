@@ -1,0 +1,13 @@
+(set-logic ALL)
+
+(declare-const i Int)     
+(declare-const j Int)     
+(declare-const x Int)     
+(declare-const a Real)    
+(declare-const b Real)    
+(declare-const c Real)    
+(declare-const d Real)    
+(let ((q (exists ((z Int)) 
+                (+ x (* q 3)))))
+  (assert (= q (+ x y z))) 
+  (check-sat))             

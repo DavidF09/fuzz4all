@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std; 
+class Person
+{
+	int num;
+	string nName;
+	string sex;
+	public:
+	void show()
+	{
+	    cout << num << ", " << nName << ", " << sex << endl;
+	}
+} p, p1;
+void main()
+{
+	cout << "P1.num = " << p1.num << endl;
+	cout << "P.num = " << p.num << endl;
+	p1.num = (int)p.num + 1;
+	cout << "P1.num = " << p1.num << endl;
+	p.show();
+	p.sex = "male";
+	p.nName = "john";
+	p.show();
+}
+ 
+#include <iostream>
+using namespace std; 
+class Person
+{
+	public:
+	void show()
+	{
+		cout << num << ", " << nName << ", " << sex << endl;
+	}
+} p;
+class Person1
+{
+	public:
+	p.show(); 
+	p.nName = "peter";
+	p.show();
+} p1;
+void main()
+{
+	Person p;
+	Person1 p1;
+}

@@ -1,0 +1,15 @@
+#include <iostream>
+struct Derived {
+    Base;
+};
+Derived d2{};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Base bderived2{};
+    printderived();
+    Derived bderived{};
+    printderived();
+    return 0;
+}

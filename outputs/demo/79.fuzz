@@ -1,0 +1,10 @@
+#include <iostream>
+void printderived() {
+    std::cout << "derived\n";
+}
+int main() {
+    Derived bderived{};
+    printderived();
+    return 0;
+}
+ 

@@ -1,0 +1,36 @@
+#include <iostream>
+
+
+class Example : public std::enable_shared_from_this<Example>
+{
+#ifdef HAVE_NEW_CXX11
+public:
+#endif
+    int x;
+    int i;
+    void f() {
+        i++;
+    }
+};
+
+Example::Example(int i) : x(0), i(i)
+{
+    std::shared_ptr <Example> ptr = shared_from_this();
+    std::thread t1(std::move( ptr ), i);
+     
+    t1.detach();
+}
+
+void print(const Example &ex)
+{
+    std::cout << "Printing " << ex.x << ", " << ex.i << "\n";
+}
+
+int main()
+{
+    Example e1(7);
+    Example e2(8);
+    e1 = e2;
+    print(e1);
+    return 0;
+}

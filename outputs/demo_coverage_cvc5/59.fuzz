@@ -1,0 +1,22 @@
+(set-logic ALL)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(declare-const x Integer)
+(declare-const y Integer)
+
+(assert (> x y))
+(assert (< (+ (* 2 y) 3) x))
+(check-sat)

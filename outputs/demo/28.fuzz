@@ -1,0 +1,13 @@
+#include <iostream>
+using std::cout;
+
+int main() {
+    int age = 20;
+    cout << age << endl;
+
+    int x = 1 + 2 * 3;
+    cout << x << endl;
+
+    auto q = 39 * 92;  
+    cout << q << endl;
+}

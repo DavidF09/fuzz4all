@@ -1,0 +1,18 @@
+(set-logic ALL)
+
+
+(declare-const x Int)
+
+(declare-const y Int)
+
+(declare-const z Int)
+
+(declare-const r Real)
+
+(assert (<= y z))
+
+(assert (< (+ (* (- 5) z) r) (* 18 z)))
+
+(check-sat)
+
+(exit)

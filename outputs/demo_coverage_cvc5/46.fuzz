@@ -1,0 +1,32 @@
+(set-logic ALL)
+ 
+
+(declare-sort A) 
+
+(declare-fun f1 (A) A) 
+
+
+(declare-fun f2 (A A) A) 
+
+(assert (= (f1 t) t)) 
+
+(assert (= (f1 nil) f1 f1)) 
+
+
+
+(declare-fun g1 (A) A) 
+
+
+
+(assert (= (g1 (f2 f1 A)) (f2 g1 A))) 
+
+
+
+(declare-fun g2 (A A) A) 
+
+
+
+(assert (= (f1 (g1 (g2 A (g1 A)))) (f1 A))) 
+
+
+(assert (= (f1 (g1 (f2 A A))) (g1 A))) 
