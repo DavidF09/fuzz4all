@@ -1,0 +1,9 @@
+#include <iostream>
+ 
+ 
+#include <vector>
+void print_data(std::vector<int> data)
+{
+    for (int element : data)
+        std::cout << "Printed int: " << element << std::endl;
+}

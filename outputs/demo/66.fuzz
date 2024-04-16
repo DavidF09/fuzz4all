@@ -1,0 +1,68 @@
+#include <iostream>
+ 
+ 
+struct file1
+{
+    file1();
+    file1(const file1&);
+    file1& operator=(const file1&);
+    int func2(const std::string&,
+               const std::string&);
+    const char * func1(std::string);
+};
+void print_file(const file1);
+void print_data(const file1);
+ 
+#include <string>
+#include <iostream>
+struct my_class
+{
+    std::string s1;
+    int i1;
+     
+    my_class(std::string && rhs1, int rhs2);
+    my_class& operator=(const my_class&);
+    my_class(my_class&& rhs) noexcept;
+    int i2;
+    ~my_class();
+    friend std::ostream& operator<< (std::ostream& os, const my_class& my);
+};
+int bar(const my_class&);
+int foo(std::string);
+ 
+#include <iostream>
+#include <string>
+struct file2
+{
+    file2();
+    file2(const file2&);
+    file2& operator=(const file2&);
+    friend std::ostream& operator<< (std::ostream& os, const file2&)
+};
+struct my_class25;
+my_class25 bar(const my_class25&);
+file2 g(std::string);
+ 
+ 
+ 
+#include <ios>                    
+#include <string>                 
+#include <iostream>               
+struct my_class26;             
+std::istream& operator>>(std::istream &inStream, my_class26&);
+std::ostream& operator<<(std::ostream &outStream, const my_class26&);
+ 
+int bar(const my_class26&);
+int foo(std::string);
+ 
+int bar_mut(my_class26&);
+int foo_mut(std::string);
+ 
+#include <std.h>                   
+#include <iostream>               
+template <typename T, typename U>     
+std::bit_reference<U> get_bit_by_addr(T* pT)  
+{
+    std::cout << "Here pT is a pointer of type " << typeid(pT).name() << std::endl;  
+     
+     

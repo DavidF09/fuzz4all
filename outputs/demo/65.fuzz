@@ -1,0 +1,9 @@
+#include <iostream>
+int main() {
+    std::cout << "Test Data: ";
+    int data = 42;
+    print_data(data);
+     
+    std::cout << "end." << std::endl;
+    return 0;
+}
