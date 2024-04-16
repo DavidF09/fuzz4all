@@ -1,0 +1,2 @@
+(set-logic ALL)
+(declare-fun i () Int) (declare-fun l1 () Int) (declare-fun l2 () Int) (declare-fun l3 () Int) (declare-fun l4 () Int) (declare-fun c1 () Int) (declare-fun c2 () Int) (declare-fun c3 () Int) (declare-fun c4 () Int) (declare-fun d1 () Int) (declare-fun d2 () Int) (declare-fun d3 () Int) (declare-fun d4 () Int) (assert (and (= (+ i (* c1 l1) (- d1)) (* i c1 l1 d1)) (= (+ i (* c2 l2) (- d2)) (* i c2 l2 d2)) (= (+ i (* c3 l3) (- d3)) (* i c3 l3 d3)) (= (+ i (* c4 l4) (- d4)) (* i c4 l4 d4)))) (check-sat) (exit) 

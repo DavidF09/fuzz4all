@@ -1,0 +1,14 @@
+(set-logic ALL)
+(set-info :unsat-core true)
+
+(declare-const X Int)
+(assert (= X (mod X 2)))
+(check-sat)
+(exit)
+
+
+
+
+
+
+

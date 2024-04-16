@@ -1,0 +1,13 @@
+(set-logic ALL)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(assert (< (* x x) (+ (* x y) 9)))
+(check-sat)
+(exit)
+
+
+http://theory.lcs.mit.edu/~rahul/smtlib.pdf
+
+SMTLIB is a language for representing and manipulating logical formulas, designed for use in computer-aided reasoning (including, but not limited to, automated theorem proving). The standard is also suitable for use as language for representing constraints in static analyzers. The name comes from the phrase'symbolic mathematical theory library', and it has proven to be a highly useful tool in the proof and analysis of computer systems, in particular, programming languages compilers/interpreters and databases. The SMTLIB standard is supported by a range of SMT solvers, as well as tools implementing the standard. The SMTLIB language is defined in [SMTLIB-v1.2.0][SMTLIB]{:ext} and is implemented in [Z3][Z3].
+[Z3]: https://github.com/Z3Prover/z3
+[SMTLIB]: http://smtlib.cs.uiowa.edu/
