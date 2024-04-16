@@ -1,0 +1,11 @@
+(set-logic ALL)
+
+(define-sort A () Int)
+(declare-fun b () A) 
+(declare-fun c () A) 
+(declare-fun d () A) 
+(declare-fun e () A) 
+(assert (distinct c b)) 
+(assert (not (= d c))) 
+(check-sat) 
+(exit)

@@ -1,0 +1,8 @@
+(set-logic ALL)
+
+(declare-sort S)
+(declare-fun f1 (S S) Bool)
+(assert (= (f1 (f1 1 2) 3) true))
+(assert (= (f1 (f1 4 5) 6) false))
+(check-sat)
+(exit)

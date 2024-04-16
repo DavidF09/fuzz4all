@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	typedef int (*FunPtr)( int );
+	FunPtr fp;
+	int *ip;
+	int (*ip2)() ()=nullptr;		 
+	FunPtr f1 = ip;  
+	ip2();
+	
+}

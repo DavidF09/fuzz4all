@@ -1,0 +1,62 @@
+#include <iostream>
+using std::cout; using namespace std;
+struct Demon {
+    int _age{ 20 };
+    double _height{ 4.5 };
+};
+
+class Animal {
+  private:
+    Demon _demon;
+  public:
+    Animal();
+    void setAge();
+    void talk();
+    void setWeight(double);   
+};
+
+Demon::Demon() {
+    cout << "Demon created with value: " << _age << ". ";
+}
+
+void Animal::setAge() {
+    cout << "Called method setAge on concrete Animal class.";
+}
+
+void Animal::talk() {
+    cout << "Called method talk on concrete Animal class.";
+}
+
+void Animal::setWeight(double weight) {
+    cout << "Called method setWeight on concrete Animal class.";
+}
+
+class Duck : public Animal {
+  public:
+    Duck();
+    void setFlyBehavior();
+};
+
+Duck::Duck() {
+    setFlyBehavior();
+}
+
+void Duck::setFlyBehavior() {
+    cout << "Called method setFlyBehavior on concrete Duck class.";
+}
+
+
+int main() {
+    Animal cat;
+    cat.setAge();
+    cat.talk();
+    Animal dog;
+    cat.setWeight(40);
+    Animal turtle;
+
+    Animal * pointer_to_Animal = &cat;
+
+    pointer_to_Animal->setAge();
+    pointer_to_Animal->talk();
+}
+

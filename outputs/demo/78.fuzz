@@ -1,0 +1,26 @@
+#include <iostream>
+class Container;
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+Container::Container() {}
+Container::Container(Container const&) = default;
+void printderived(Derived) {
+    std::cout << "derived" << std::endl;
+}
+#pragma GCC diagnostic ignored "-Weffc++"
+class Container
+{
+public:
+   Container(){ }
+   void Container(){ }
+   
+private:
+   Container(Container const&);
+};
+int main() {
+    Container c;
+    Container d;
+    printderived();
+    return 0;
+}

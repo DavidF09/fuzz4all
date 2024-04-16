@@ -1,0 +1,13 @@
+(set-logic ALL)
+
+
+(declare-const X Int)
+(declare-const Y Real)
+(declare-const A1 (Array Int Real))
+(declare-const A2 (Array Int Real))
+
+(assert (= 1 2))
+
+(assert (= 99 1))
+
+(exit)

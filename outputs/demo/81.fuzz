@@ -1,0 +1,12 @@
+#include <iostream>
+struct Base {};
+struct Derived : public Base {};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Derived a{2}, b{};
+    printderived();
+    std::cout << b << std::endl;
+    return 0;
+}

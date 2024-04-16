@@ -1,0 +1,16 @@
+(set-logic ALL)
+
+
+(declare-const A Real)
+(declare-const B (Array Real Real)) 
+
+(declare-const C (Array Real Real))
+(declare-const Func (Array Real Real))
+(declare-const Fg (Array Real Real))
+
+(assert (= Func (store C A B)))
+
+(assert (= Fg (store D A C)))
+(check-sat)
+
+(get-model)

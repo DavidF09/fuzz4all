@@ -1,0 +1,11 @@
+#include <iostream>
+
+
+const int A = a;
+const int B = b;
+float d = c;
+
+
+int main()
+{
+}

@@ -1,0 +1,8 @@
+(set-logic ALL)
+(declare-const x Int)
+(declare-const y Int)
+(define-fun square (z Int) Int (* z z))
+(declare-const z Int)
+(assert (square (+ 5 4 x y z)))
+(check-sat)
+(exit)

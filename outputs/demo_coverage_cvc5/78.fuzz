@@ -1,0 +1,10 @@
+(set-logic ALL)
+(declare-const x Int)
+(declare-const y Int)
+(declare-fun P (Int Int) Bool)
+(declare-fun Q (Int Int) Bool)
+(assert (= (Q x y)
+          (and (P x y)
+              true)))
+(check-sat)
+

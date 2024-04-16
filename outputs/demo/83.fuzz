@@ -1,0 +1,17 @@
+#include <iostream>
+struct Base {
+    virtual void f1() = 0;  
+    virtual void f2() = 0;
+};
+struct Derived : public Base {
+    void f1() {}
+    void f2() {}
+};
+void printderived() {
+    Derived cderived{};
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    printderived();
+    return 0;
+}

@@ -1,0 +1,74 @@
+#include <iostream>
+
+
+int main()
+{
+  using namespace std;
+  
+  class Shape
+  {
+  public:
+    virtual void Draw() = 0;
+    virtual double GetArea() = 0;
+  };
+  
+  class Circle : public Shape
+  {
+  private:
+    double radius;
+  
+  public:
+    Circle() : radius(1.0) {}
+    
+    Circle(double radius) : radius(radius) {}
+    
+    virtual void Draw() { cout << "Drawing circle " << radius << "..." << endl; }
+    virtual double GetArea() { return M_PI * radius * radius; }
+  };
+  
+  class Square : public Shape
+  {
+  private:
+    double side;
+    double sides;
+  
+  public:
+    Square() : side(1.0), sides(4) {}
+    
+    Square(double side, double sides) : side(side), sides(sides) {}
+    
+    virtual void Draw() { cout << "Drawing square " << sides << " " << side << "..." << endl; }
+    virtual double GetArea() { return sides * side; }
+    
+  };
+  
+  class Triangle : public Shape
+  {
+  private:
+    double side1, side2, height;
+  
+  public:
+    Triangle() : side1(1.0), side2(1.0), height(1.0) {}
+    
+    Triangle(double side1, double side2, double height) : side1(side1), side2(side2), height(height) {}
+    
+    virtual void Draw() { cout << "Drawing triangle... " << endl; }
+    virtual double GetArea() { return side1 * side2 / 2.0 + height; }
+  };
+  
+  Shape* obj = new Circle(0.5);
+  obj->Draw();
+  double area = obj->GetArea();
+  
+  obj = new Square(2.0, 2);
+  obj->Draw();
+  area += obj->GetArea();
+    
+  obj = new Triangle(3.0, 4.0, 3.0);
+  obj->Draw();
+  area -= obj->GetArea();
+  
+  delete obj;
+  return 0;
+}
+

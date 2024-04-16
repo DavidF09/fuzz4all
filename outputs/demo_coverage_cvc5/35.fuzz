@@ -1,0 +1,11 @@
+(set-logic ALL)
+
+(declare-const x Int)
+(declare-const y Int)
+(declare-const z Int)
+(declare-const w Int)
+(assert (= x (+ 1 y)))
+(solve)
+(check-sat)
+(get-model)
+(exit)

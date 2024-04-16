@@ -1,0 +1,25 @@
+(set-logic ALL)
+
+
+
+(declare-sort Foo 3)
+
+
+(declare-fun baz (Foo Foo) Foo)
+
+
+(declare-fun foo (Foo Foo) Bool)
+
+
+(declare-fun bar2 (Foo Foo) Bool)
+
+
+(declare-fun bar ((Foo 0) (Foo 1)) Bool)
+
+
+
+(assert (and (bar2 (baz a a) (baz a c)) (foo a b)))
+
+
+(assert (bar a (baz a a)))
+

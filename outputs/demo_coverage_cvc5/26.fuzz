@@ -1,0 +1,24 @@
+(set-logic ALL)
+
+
+(declare-const x Int)
+(assert (and (= x (* (- x) (- x) (+ x x)))
+               (= (- 1) 1)))           
+(check-sat)                              
+(get-model)
+
+# (+ 1 1)                                   
+(- 1 1)                                   
+
+(declare-sort Real)
+(define-fun my-real () Real 2.0)
+
+(set-logic ALL)
+
+(declare-datatype my-data (Cons my-data my-data Int))
+
+(declare-const c my-data)
+(assert (ite true c c))
+
+(check-sat)
+(get-model)

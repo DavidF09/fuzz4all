@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+struct Base {};
+struct Derived : public Base {};
+ 
+#include <iostream>
+using namespace std;
+struct Derived : public Base {};
+void printderived() {
+    cout << "derived" << endl;
+}
+void printbase() {
+    cout << "Base(Derived class)" << endl;
+}
+int main() {
+    printderived();
+    printbase();
+    return 0;
+}
+ 

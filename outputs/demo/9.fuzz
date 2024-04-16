@@ -1,0 +1,30 @@
+#include <iostream>
+
+class A
+{
+public:
+	
+	int getdata()
+	{ return 0; }
+
+};
+
+class B
+{
+public:
+	
+	int getdata()
+	{
+		A a;
+		return a.getdata();
+	}
+
+};
+
+int main ()
+{
+	B b;
+	std::cout  <<"Hello "<< b.getdata() <<"\n";
+	return 0;	
+}
+

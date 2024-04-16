@@ -1,0 +1,6 @@
+(set-logic ALL)
+
+
+(declare-fun f (Real Real Real) Real)
+(assert (= (f 1.3 2.2.3) (f 1.3 2.2 3)))
+(check-sat)

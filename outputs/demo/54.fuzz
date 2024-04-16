@@ -1,0 +1,36 @@
+#include <iostream>
+
+#include <vector>
+using namespace std;
+
+int main() 
+{	 
+	vector<int> v1,v2; 
+	const int initval = 10; 
+	
+	 			 
+	v1.push_back(-1);											 
+	vector<int>::iterator i = v1.begin();						 
+	
+	cout << '\n' << i << '\n';										 
+	v1.push_back(-8);										 
+	cout << '\n' << i << '\n';										 
+	v2.push_back(-8);										 
+	
+	cout << '\n' << v1.size() << '\n';							 
+	cout << '\n' << v1.back() << '\n';								 
+	
+	 
+	v1.insert(v1.begin(), 1, 3, 5, 7);
+	cout << '\n' << v1.begin() << '\n';							 
+	cout << '\n' << v1.end() << '\n';							 
+	
+	 
+	v1.insert(v1.begin(), initval);
+	cout << '\n' << v1.begin() << '\n';							 
+	cout << '\n' << v1.back() << '\n';							 
+	
+	
+	cout << '\n';
+	return 0;
+}

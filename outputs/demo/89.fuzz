@@ -1,0 +1,16 @@
+#include <iostream>
+struct Base {};
+struct Derived : public Base {};
+struct Base2 {};
+struct Derived2 : public Base2 {};
+int main() {
+    auto *pBase = new Base();
+    auto *pBase2 = new Base2{};
+    std::cout << "derived" << std::endl;
+     
+    Derived bderived = new Derived{};
+    std::cout << "derived2" << std::endl;
+    pBase->~Base();
+    pBase2->~Base();
+    return 0;
+}

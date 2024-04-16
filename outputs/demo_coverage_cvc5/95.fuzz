@@ -1,0 +1,12 @@
+(set-logic ALL)
+(declare-fun n () Int)
+(declare-fun d () Int)
+(assert 
+  (exists ((x Int)) 
+    (and (>= x 0) (= (* n x) d))))
+(check-sat)
+(exit)
+
+
+
+

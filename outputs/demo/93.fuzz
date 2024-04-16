@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+struct Base {
+    Base() = default;
+};
+class Derived : public Base {};
+void printderived() {
+    cout << "derived" << endl;
+}
+int main() {
+    new Derived;
+    printderived();
+    return 0;
+}

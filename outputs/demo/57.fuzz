@@ -1,0 +1,18 @@
+#include <iostream>
+class MyClass {
+public:
+  MyClass() {
+    for (int i = 0; i < 12; i++)
+    {
+      std::cout << "MyClass Constructor" << std::endl;
+    }
+  }
+};
+int main()
+{
+  MyClass mc;
+
+   
+  mc.operator=(std::move(mc2));    
+  return 0;
+}

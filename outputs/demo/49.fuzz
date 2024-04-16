@@ -1,0 +1,124 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int i,l=100,n=2000;
+	cout << "Hello World";
+	do{
+		i=l++;
+	} while (i!=n);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l--;
+	} while (i);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l++;
+	} while (i);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l--;
+	} while (i);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l--;
+	} while (i);
+	cout << "\n";
+	cout << "Hello World";
+	do{
+		i=l++;
+		cout << "\n";
+		cout << "Hello World";
+		do{
+			i=l++;
+		} while (i);
+	} while (i);
+	
+	cout << "\n";
+	
+	int j=0;
+
+	do{
+		j++;
+		if (j == 5)
+			cout << endl;
+	} while (j<=5);
+	cout << "\n";
+	do{
+		j--;
+		if (j < 5)
+			cout << endl;
+	} while (j>=5);
+	cout << "\n";
+
+	int k=0;
+	j=0;
+
+	do{
+		i=k++;
+		if (j++!= 2)
+			cout << "Hello ";
+	} while (i<=10);
+	cout << "\n";
+
+	for (i=0; i<5; i++)
+		cout << i;
+
+	int a[]={1,2,3,4,5};
+	int ptr[2]={1,2};
+	int b[2]={10,20};
+	cout << "Address of " << &a[2] << " is :" << &b << endl;
+	cout << "Address of " << &a[3] << " is :" << &b << endl;
+
+	int len = 5;
+	int *nPtr = &len;
+	cout << "Address of " << nPtr << " is :" << &a << endl;
+
+	i=3;
+	while (i<10)
+	{
+		i*=2;
+		cout << i << "\n";
+	}
+	cout << "\n";
+	i=3;
+	do
+	{
+		i*=2;
+		cout << i << "\n";
+	} while (i<10);
+	
+	float *fPtr = new float [5];
+	for (int i=3; i>=10; i--)
+		fPtr[i]=i;
+	for (int i=0; i<5; i++)
+		cout << fPtr[i] << "\n";
+	
+	char m[5]{'h','e','l','l','o'};
+	char *p=&m[2];
+	char *c = p;
+	for (int i=2; i>0; i--)
+	{
+		*c++ = *p;
+		while (*p =='')
+			p++;
+	}
+	*c = '\0';
+	p = ++c;
+	while *p ==''
+		p++;
+	*p = '\0';
+	int *s = {3,5,7};
+	 
+	int *t = &s[1];
+	int *u = &s[1] - &s[1] + 1;  
+
+	cout << "&s=" << &s << "\n";
+	cout << "&t=" << &t << "\n";
+	cout << "&u=" << &u << "\n";
+
+	int a[2][3]{{10,2

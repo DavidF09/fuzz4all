@@ -1,0 +1,10 @@
+(set-logic ALL)
+
+(declare-const a Real)
+
+(set-info :named)
+
+(declare-const b Real)
+(assert (> a b))
+
+(check-sat)

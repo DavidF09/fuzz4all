@@ -1,0 +1,9 @@
+#include <iostream>
+using std::cout; using namespace std;
+int main()
+{
+    int v;
+    cout << "Enter your age: ";
+    cin >> v && ((v < 0)? (cout << "your age cannot be negative")) : (cout << "Enter your age: ")) && cin >> v;
+    return 0;
+}

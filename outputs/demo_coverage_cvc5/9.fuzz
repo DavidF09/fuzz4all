@@ -1,0 +1,6 @@
+(set-logic ALL)
+
+(declare-const x Real)
+(declare-const y Real)
+(check-sat)
+(exit)

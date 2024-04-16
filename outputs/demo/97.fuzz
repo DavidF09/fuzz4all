@@ -1,0 +1,14 @@
+#include <iostream>
+
+
+#if 0
+cout << "hello" << endl;
+# else
+int i;
+i++;
+#endif
+
+int main()
+{
+	return 0;
+}

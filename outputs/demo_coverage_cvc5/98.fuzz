@@ -1,0 +1,19 @@
+(set-logic ALL)
+
+(declare-const constant Int)
+
+(declare-const my_var Int)
+
+(declare-fun f (Int Int) Int) 
+
+(assert (= (f 10 10) constant))
+
+(assert (= my_var (f 10 10))) 
+
+(assert (!= my_var 0)) 
+
+(assert (!= constant 0)) 
+
+
+(check-sat)
+(exit)

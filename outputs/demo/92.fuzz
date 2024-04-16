@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+class Base {
+public:
+     
+    Base() {
+        cout << "Base" << endl;
+    }
+    Base(const Base& b) {
+        cout << "Base(const Base& b)" << endl;
+    }
+     
+    virtual ~Base() {
+        cout << "~Base" << endl;
+    }
+};
+class Derived1 : public Base {
+public:
+    Derived1() {
+        cout << "Derived1" << endl;
+    }
+    Derived1(const Derived1& b) {
+        cout << "Derived1(const Derived1& b)" << endl;
+    }
+    Derived1& operator+=(const Derived1& b) {
+        cout << "Derived1& operator++(const Derived1& b)" << endl;
+        return *this;
+    }
+    Derived1 operator++(int) const {
+        cout << "Derived1 operator++(const Derived1& b)" << endl;
+        Derived1 s1 = *this;
+        ++*this;
+        return s1;
+    }
+     
+    ~Derived1() {
+        cout << "~Derived1" << endl;
+    }
+};
+class Derived2 {
+public:
+    Derived2() {
+        cout << "Derived2" << endl;
+    }
+    Derived2(const Derived2& b) {
+        cout << "Derived2(const Derived2& b)" << endl;
+    }
+    Derived2 operator++(int) const {
+        cout << "Derived2 operator++(const Derived2& b)" << endl;
+        Derived2 s2 = *this;
+        ++*this;
+        return s2;
+    }
+     
+    ~Derived2() {
+        cout << "~Derived2" << endl;
+    }
+};
+int main() {
+    Base b;
+    Base b2 = b;
+    b2++;
+    Base b3 = b3;
+    Derived d;
+    Derived d2 = d;
+    try {
+        b2 *= b2;
+    }  
+     
+    try {
+        d++;
+    }  
+    Derived2 d3;
+    d2 += d2;
+    printderived();
+    return 0;
+}

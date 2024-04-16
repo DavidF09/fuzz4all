@@ -1,0 +1,15 @@
+#include <iostream>
+struct Base {
+  virtual ~Base() = default;
+};
+struct Derived : public Base {
+  virtual ~Derived() = default;
+};
+void printderived() {
+    std::cout << "derived" << std::endl;
+}
+int main() {
+    Derived bderived{};
+    printderived();
+    return 0;
+}

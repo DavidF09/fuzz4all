@@ -1,0 +1,6 @@
+(set-logic ALL)
+(declare-fun x () Int)
+(declare-fun c (Int) Bool)
+(assert (forall ((y Int)) (if (c 1) (= x y) (= y x))))
+(check-sat)
+(exit)
