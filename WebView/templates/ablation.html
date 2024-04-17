@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coverage Data</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='coverage.css')}}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="header">
+        <div class="header_div">
+            <h1 id="bug_type">Effectiveness of Variants</h1>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>Variants</th>
+            <th>Description</th>
+            <th>C-Cov.</th>
+            <th>C-% Valid</th>
+            <th>C++-Cov.</th>
+            <th>C++-% Valid</th>
+            <th>SMT-Cov.</th>
+            <th>SMT-% Valid</th>
+            <th>Go-Cov.</th>
+            <th>Go-% Valid</th>
+            <th>Java-Cov.</th>
+            <th>Java-% Valid</th>
+            <th>Qiskit-Cov.</th>
+            <th>Qiskit-% Valid</th>
+        </tr>
+
+        {% for info in data %}
+            <tr>
+                {% for i in info %}
+                    <td><div class="some">{{i}}</div></td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
