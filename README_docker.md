@@ -58,7 +58,7 @@ export GPT_MODEL="gpt-3.5-turbo"
 
 ```
 
-Add this environment variable to be able to run the fuzzing process.
+Add this environment variable to be able to run the Fuzz4All process.
 
 ```bash
 export OPENAI_API_KEY="KEY_HERE"
@@ -92,12 +92,12 @@ Now you are ready to replicate the results from the paper.
 
 ## Reproducing the results
 
-### Main results
+### Generate figures
 
-This will produce the 6 figures in Figure 4 (in `fig/coverage_{target}.pdf`) using the coverage data collected in the runs.
+This will produce the 6 figures in Figure 4 (in `fig/coverage-{target}.pdf`) using the coverage data collected in the runs.
 
 ```bash
-rm -r /home/Fuzz4All/fig/coverage-*
+rm -r fig/coverage-*
 python tools/coverage/plot_full_run_coverage.py
 
 ```
@@ -105,7 +105,7 @@ python tools/coverage/plot_full_run_coverage.py
 You can download the figures by running the following command in your host machine:
 
 ```bash
-docker cp <containerId>:/home/Fuzz4All/fig .
+docker cp <containerId>:fig .
 ```
 
 ### Generate table 2 data
@@ -142,12 +142,26 @@ python WebView/web_coverage.py
 
 ```
 
+You can download the HTML file by running the following command in your host machine:
+
+```bash
+docker cp <containerId>:WebView/web_coverage.html .
+
+```
+
 ### Generate table 3 on the web
 
 This will generate an HTML file displaying Table 3 from the research paper.
 
 ```bash
 python WebView/web_targeted.py
+
+```
+
+You can download the HTML file by running the following command in your host machine:
+
+```bash
+docker cp <containerId>:WebView/web_targeted.html .
 
 ```
 
@@ -160,13 +174,28 @@ python WebView/web_ablation.py
 
 ```
 
+You can download the HTML file by running the following command in your host machine:
+
+```bash
+docker cp <containerId>:WebView/web_ablation.html .
+
+```
+
 ### Generate figures on the web
 
 This will generate an HTML file displaying the graphs from the research paper.
 
 ```bash
-rm -r /home/Fuzz4All/WebView/img/coverage-*
+rm -r WebView/img/coverage-*
 python WebView/web_full_coverage.py
+
+```
+
+You can download the HTML file and images by running the following command in your host machine:
+
+```bash
+docker cp <containerId>:WebView/web_full_coverage.html .
+docker cp <containerId>:WebView/img .
 
 ```
 
