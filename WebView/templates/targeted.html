@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Targeted Campaign Results</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='coverage.css')}}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    {% for info in data %}
+        <h1 id="bug_type">{{info[0]}}</h1>
+        <table id="clang_table">
+            {% for rows in info %}
+                {% if rows == info[0] %}
+                    {{continue}}
+                {% else %}
+                    <tr>
+                        {% for i in rows %}
+                            {% if rows == info[1] %}
+                                <th>{{i}}</th>
+                            {% else %}
+                                <td>{{i}}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endif %}        
+            {% endfor %}
+        </table>
+
+    {% endfor %}
+    
+</body>
+</html>

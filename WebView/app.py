@@ -3,6 +3,7 @@ from read_bugs_csv import get_bug_cvs_data
 from web_coverage import grab_csv_data as grab_coverage_csv_data
 from read_outputs_data import get_outputs_data
 from web_ablation import grab_csv_data as grab_ablation_csv_data
+from web_targeted import grab_csv_data as grab_targeted_csv_data
 
 app = Flask(__name__)
 
@@ -39,6 +40,11 @@ def outputs():
 def ablation():
     return render_template('ablation.html', 
                            data=grab_ablation_csv_data('IntermediateResults/full_run/ablation_run.csv'))
+
+@app.route('/targeted')
+def targeted():
+    return render_template('targeted.html', 
+                           data=grab_targeted_csv_data('IntermediateResults/full_run/targeted_run.csv'))
 
 if __name__ == '__main__':
     app.run(debug=True)
