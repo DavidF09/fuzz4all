@@ -6,6 +6,7 @@ from read_outputs_data import get_outputs_data
 app = Flask(__name__)
 
 @app.route('/')
+@app.route('/bugs')
 def index():
     return render_template('index.html', 
                             clang_data=get_bug_cvs_data('bugs/clang.csv'), 

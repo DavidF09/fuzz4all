@@ -1,11 +1,15 @@
-.navbar a {
-    background-color: #c8eaf3;
-    border: 5px solid rgba(255, 255, 255, 0.664);
-    padding: 10px;
-    margin-right: 15px;
-    color: rgb(0, 0, 0);
-}
-
-.navbar a:hover {
-    text-decoration: underline;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='navbar.css')}}">
+</head>
+<body>
+    <div class="header_navbar">
+        <div class="navbar">
+            <a href="/bugs">Bugs</a>
+            <a href="coverage">Coverage</a>
+            <a href="outputs">Outputs</a>
+        </div>
+    </div>
+</body>
+</html>
