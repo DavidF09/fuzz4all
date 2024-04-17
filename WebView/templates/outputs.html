@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Democvc5 Outputs Data</title>
+    <style>
+        .navbar a {
+            background-color: #c8eaf3;
+            border: 5px solid rgba(255, 255, 255, 0.664);
+            padding: 10px;
+            margin-right: 15px;
+            color: rgb(0, 0, 0);
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+            width: 100%;
+        }
+
+        td {
+            text-align: center;
+            padding: 5px;
+        }
+          
+        tr:nth-child(odd) {
+            background-color: #c8eaf3;
+            border: 1px solid black;
+        }
+
+        .file-box {
+            background-color: #c8f3f3;
+            border: 15px solid rgba(255, 255, 255, 0.664);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 0 10px 10px 10px;
+            margin: 20px auto;
+            max-height: fit-content;
+            max-width: fit-content;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .header_div {
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            background-color: transparent;
+            margin: 0 auto;
+        }
+
+        #democvc5_outputs_info {
+            padding: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Outputs</a>
+    </div>
+    
+    <div class="header">
+        <h1>Democvc5 Output Data</h1>
+    </div>
+    <div id="democvc5_outputs_info">
+        {% for filename, content in democvc5_outputs.items() %}
+            <div class="file-box">
+                <h2>{{ filename }}</h2>
+                <pre class="some">{{ content }}</pre>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="header">
+        <h1>Demo Output Data</h1>
+    </div>
+    <div id="demo_outputs_info">
+        {% for filename, content in demo_outputs.items() %}
+            <div class="file-box">
+                <h2>{{ filename }}</h2>
+                <pre class="some">{{ content }}</pre>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

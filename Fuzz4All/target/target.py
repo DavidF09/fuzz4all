@@ -166,6 +166,7 @@ class Target(object):
             self.m_logger.logo("Use handwritten prompt ... ", level=LEVEL.INFO)
             best_prompt = self.wrap_prompt(kwargs["hw_prompt"])
         else:
+            gpt_model = os.environ.get("GPT_MODEL", "gpt-4");
             self.m_logger.logo("Use auto-prompting prompt ... ", level=LEVEL.INFO)
             message = kwargs["message"]
             # first run with temperature 0.0 to get the first prompt
@@ -174,7 +175,7 @@ class Target(object):
                 self._create_auto_prompt_message(message),
                 max_tokens=500,
                 temperature=0.0,
-                model="gpt-4",
+                model=gpt_model,
             )
             response = request_engine(config)
             greedy_prompt = self.wrap_prompt(response.choices[0].message.content)
@@ -193,7 +194,7 @@ class Target(object):
                     self._create_auto_prompt_message(message),
                     max_tokens=500,
                     temperature=1,
-                    model="gpt-4",
+                    model=gpt_model,
                 )
                 response = request_engine(config)
                 prompt = self.wrap_prompt(response.choices[0].message.content)
