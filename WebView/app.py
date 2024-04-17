@@ -7,7 +7,7 @@ app = Flask(__name__)
 def outputs():
     demo_directory = 'outputs/demo'
     demo_data = get_outputs_data(demo_directory)
-    
+
     cvc5_directory = 'outputs/demo_coverage_cvc5'
     cvc5_data = get_outputs_data(cvc5_directory)
 
