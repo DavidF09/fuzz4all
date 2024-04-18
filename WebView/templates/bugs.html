@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bugs Data</title>
+
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <style>
+        #cvc5, #gcc, #go, #java, #qiskit, #z3 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="header">
+        <div class="header_div">
+            <h1 id="bug_type">Clang Bugs Data</h1>
+        </div>
+        <div class="header_div">
+            <select id="bugs" onChange="updateView()">
+                <option value="clang">clang</option>
+                <option value="cvc5">cvc5</option>
+                <option value="gcc">gcc</option>
+                <option value="go">go</option>
+                <option value="java">java</option>
+                <option value="qiskit">qiskit</option>
+                <option value="z3">z3</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="clang">
+        <table id="clang_table">
+            {% for info in clang_data %}
+                <tr>
+                    {% for i in info %}
+                        <td><div class="some">{{i}}</div></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="cvc5">
+        <table id="cvc5_table">
+            {% for info in cvc5_data %}
+                <tr>
+                    {% for i in info %}
+                        <td><div class="some">{{i}}</div></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="gcc">
+        <table id="gcc_table">
+            {% for info in gcc_data %}
+                <tr>
+                    {% for i in info %}
+                        <td><div class="some">{{i}}</div></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="go">
+        <table id="go_table">
+            {% for info in go_data %}
+                <tr>
+                    {% for i in info %}
+                        <td><div class="some">{{i}}</div></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="java">
+        <table id="java_table">
+            {% for info in java_data %}
+                <tr>
+                    {% for i in info %}
+                        <td><div class="some">{{i}}</div></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="qiskit">
+        <table id="qiskit_table">
+            {% for info in qiskit_data %}
+                <tr>
+                    {% for i in info %}
+                        <td><div class="some">{{i}}</div></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="z3">
+        <table id="z3_table">
+            {% for info in z3_data %}
+                <tr>
+                    {% for i in info %}
+                        <td><div class="some">{{i}}</div></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

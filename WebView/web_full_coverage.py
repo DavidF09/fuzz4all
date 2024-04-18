@@ -192,7 +192,7 @@ def plot_c_full_run():
     plt.legend(loc="lower right", ncol=2)
 
     # Refactored to save the plot as a png file
-    plt.savefig("WebView/img/coverage-gcc.png")
+    plt.savefig("WebView/static/images/coverage-gcc.png")
 
 
 def plot_cpp_full_run():
@@ -273,7 +273,7 @@ def plot_cpp_full_run():
     plt.legend(loc="lower right")
 
     # Refactored to save the plot as a png file
-    plt.savefig("WebView/img/coverage-g++.png")
+    plt.savefig("WebView/static/images/coverage-g++.png")
 
 
 def plot_smt_full_run():
@@ -355,7 +355,7 @@ def plot_smt_full_run():
     plt.legend(loc="lower right", ncol=2)
 
     # Refactored to save the plot as a png file
-    plt.savefig("WebView/img/coverage-cvc5.png")
+    plt.savefig("WebView/static/images/coverage-cvc5.png")
 
 
 def plot_go_full_run():
@@ -436,7 +436,7 @@ def plot_go_full_run():
     plt.legend(loc="lower right", ncol=2)
 
     # Refactored to save the plot as a png file
-    plt.savefig("WebView/img/coverage-go.png")
+    plt.savefig("WebView/static/images/coverage-go.png")
 
 
 def plot_java_full_run():
@@ -516,7 +516,7 @@ def plot_java_full_run():
     plt.legend(loc="lower right")
 
     # Refactored to save the plot as a png file
-    plt.savefig("WebView/img/coverage-javac.png")
+    plt.savefig("WebView/static/images/coverage-javac.png")
 
 
 def plot_qiskit_full_run():
@@ -591,7 +591,7 @@ def plot_qiskit_full_run():
     plt.legend(loc="lower right")
 
     # Refactored to save the plot as a png file
-    plt.savefig("WebView/img/coverage-qiskit.png")
+    plt.savefig("WebView/static/images/coverage-qiskit.png")
 
 # Added function to generate html file based on images
 def generate_html():
@@ -611,6 +611,14 @@ def generate_html():
 
     with open('WebView/web_full_coverage.html', 'w') as f:
         f.write(html_content)
+
+def generate_images():
+    plot_cpp_full_run()
+    plot_smt_full_run()
+    plot_go_full_run()
+    plot_c_full_run()
+    plot_java_full_run()
+    plot_qiskit_full_run()
 
 if __name__ == "__main__":
     print("Plotting CPP coverage full run ...")
