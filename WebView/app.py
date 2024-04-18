@@ -9,9 +9,21 @@ from web_full_coverage import generate_images
 app = Flask(__name__)
 
 @app.route('/')
+@app.route('/outputs')
+def outputs():
+    demo_directory = 'outputs/demo'
+    demo_data = get_outputs_data(demo_directory)
+
+    cvc5_directory = 'outputs/demo_coverage_cvc5'
+    cvc5_data = get_outputs_data(cvc5_directory)
+
+    return render_template('outputs.html', 
+                           demo_outputs=demo_data, 
+                           democvc5_outputs=cvc5_data)
+
 @app.route('/bugs')
-def index():
-    return render_template('index.html', 
+def bugs():
+    return render_template('bugs.html', 
                             clang_data=get_bug_cvs_data('bugs/clang.csv'), 
                             cvc5_data=get_bug_cvs_data('bugs/cvc5.csv'), 
                             gcc_data=get_bug_cvs_data('bugs/gcc.csv'),
@@ -24,18 +36,6 @@ def index():
 def coverage():
     return render_template('coverage.html', 
                            data=grab_coverage_csv_data('IntermediateResults/full_run/full_run_coverage.csv'))
-
-@app.route('/outputs')
-def outputs():
-    demo_directory = 'outputs/demo'
-    demo_data = get_outputs_data(demo_directory)
-
-    cvc5_directory = 'outputs/demo_coverage_cvc5'
-    cvc5_data = get_outputs_data(cvc5_directory)
-
-    return render_template('outputs.html', 
-                           demo_outputs=demo_data, 
-                           democvc5_outputs=cvc5_data)
 
 @app.route('/ablation')
 def ablation():

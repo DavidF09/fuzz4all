@@ -15,3 +15,4 @@ genhtml
 matplotlib
 coverage==7.2.7
 pandas==2.0.3
+flask==3.0.3
