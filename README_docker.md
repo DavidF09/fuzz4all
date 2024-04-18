@@ -235,6 +235,8 @@ Below is start script to test whether the model is running smoothly.
 
 ```
 
+Refer to the `Run Fuzz4All` section of the `README_artifact.md` file for the expected output, it should be similar to it.
+
 ### Run the fuzzing full run.
 
 You can run the full Fuzz4All process which includes auto-prompting + fuzzing.
@@ -245,3 +247,5 @@ You can run the full Fuzz4All process which includes auto-prompting + fuzzing.
 ```
 
 Note that `target` can be gcc, g++, go, javac, cvc5, or qiskit.
+
+Refer to the `Run Fuzz4All` section of the `README_artifact.md` file for the expected output, it should be similar to it.
