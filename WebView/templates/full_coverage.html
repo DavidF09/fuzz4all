@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coverage Results</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='coverage.css')}}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1>Full Coverage Results</h1>
+
+    <center>
+        <img src="{{url_for('static', filename='images/coverage-gcc.png')}}" alt="coverage-gcc.png">
+        <img src="{{url_for('static', filename='images/coverage-g++.png')}}" alt="coverage-g++.png">
+        <img src="{{url_for('static', filename='images/coverage-cvc5.png')}}" alt="coverage-cvc5.png">
+        <img src="{{url_for('static', filename='images/coverage-go.png')}}" alt="coverage-go.png">
+        <img src="{{url_for('static', filename='images/coverage-javac.png')}}" alt="coverage-javac.png">
+        <img src="{{url_for('static', filename='images/coverage-qiskit.png')}}" alt="coverage-qiskit.png">
+    </center>
+    
+</body>
+</html>

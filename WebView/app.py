@@ -4,6 +4,7 @@ from web_coverage import grab_csv_data as grab_coverage_csv_data
 from read_outputs_data import get_outputs_data
 from web_ablation import grab_csv_data as grab_ablation_csv_data
 from web_targeted import grab_csv_data as grab_targeted_csv_data
+from web_full_coverage import generate_images
 
 app = Flask(__name__)
 
@@ -45,6 +46,11 @@ def ablation():
 def targeted():
     return render_template('targeted.html', 
                            data=grab_targeted_csv_data('IntermediateResults/full_run/targeted_run.csv'))
+
+@app.route('/full_coverage')
+def full_coverage():
+    return render_template('full_coverage.html')
+generate_images()
 
 if __name__ == '__main__':
     app.run(debug=True)
